@@ -14,7 +14,7 @@ const Navbar = () => {
 			<Link href={"/"}>
 				{theme === "dark" ? (
 					<Image
-						src={"/assets/Logo.svg"}
+						src={"/assets/logo-light.svg"}
 						width={0}
 						height={0}
 						className="w-24"
@@ -22,7 +22,7 @@ const Navbar = () => {
 					/>
 				) : (
 					<Image
-						src={"/assets/Logo-black.svg"}
+						src={"/assets/logo-dark.svg"}
 						width={0}
 						height={0}
 						className="w-24"
@@ -51,13 +51,11 @@ const Navbar = () => {
 						Blog
 					</Link>
 				</li>
-				<li>
-					<p className="pointer-events-none text-sm p-1.5 text-muted-foreground bg-muted rounded border font-mono">
-						Press{" "}
-						<div className=" inline-flex select-none items-center gap-1 text-[10px] font-medium opacity-100">
-							<span className="text-xs">⌘</span>K
-						</div>
-					</p>
+				<li className="pointer-events-none text-sm p-1.5 text-muted-foreground bg-muted rounded border font-mono">
+					Press{" "}
+					<div className=" inline-flex select-none items-center gap-1 text-[10px] font-medium opacity-100">
+						<span className="text-xs">Ctrl +</span>K
+					</div>
 				</li>
 
 				<ToggleTheme />
