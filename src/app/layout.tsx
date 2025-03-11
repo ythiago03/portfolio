@@ -3,6 +3,7 @@ import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/theme-provider";
 import Navbar from "@/components/template/Navbar";
+import Command from "@/components/template/Command";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
 						<Navbar />
 					</header>
 					{children}
+					<Command />
 				</ThemeProvider>
 			</body>
 		</html>
