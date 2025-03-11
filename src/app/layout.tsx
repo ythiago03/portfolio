@@ -1,18 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/theme-provider";
 import Navbar from "@/components/template/Navbar";
 
-const geistSans = Geist({
-	variable: "--font-geist-sans",
-	subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
-	subsets: ["latin"],
-});
+const openSans = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -27,7 +19,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} !p-0  w-2/3 !mx-auto antialiased`}
+				className={`${openSans.className} !p-0  w-2/3 !mx-auto antialiased`}
 			>
 				<ThemeProvider
 					attribute="class"
@@ -35,7 +27,9 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<Navbar />
+					<header>
+						<Navbar />
+					</header>
 					{children}
 				</ThemeProvider>
 			</body>
