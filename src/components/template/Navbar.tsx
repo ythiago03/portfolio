@@ -31,21 +31,36 @@ const Navbar = () => {
 				)}
 			</Link>
 			<ul className="flex items-center gap-3">
-				<li className="cursor-pointer hover:font-semibold">Home</li>
-				<li className="cursor-pointer hover:font-semibold">About</li>
-				<li className="cursor-pointer hover:font-semibold">Projects</li>
-				<li className="cursor-pointer hover:font-semibold">Blog</li>
 				<li>
-					<p className="text-sm text-muted-foreground">
+					<Link href={"/"} className="hover:text-muted-foreground">
+						Home
+					</Link>
+				</li>
+				<li>
+					<Link href={"/"} className="hover:text-muted-foreground">
+						About
+					</Link>
+				</li>
+				<li>
+					<Link href={"/"} className="hover:text-muted-foreground">
+						Projects
+					</Link>
+				</li>
+				<li>
+					<Link href={"/"} className="hover:text-muted-foreground">
+						Blog
+					</Link>
+				</li>
+				<li>
+					<p className="pointer-events-none text-sm p-1.5 text-muted-foreground bg-muted rounded border font-mono">
 						Press{" "}
-						<div className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
+						<div className=" inline-flex select-none items-center gap-1 text-[10px] font-medium opacity-100">
 							<span className="text-xs">⌘</span>K
 						</div>
 					</p>
 				</li>
-				<li>
-					<ToggleTheme />
-				</li>
+
+				<ToggleTheme />
 			</ul>
 		</nav>
 	);
