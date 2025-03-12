@@ -12,21 +12,23 @@ const Navbar = () => {
 	return (
 		<nav className="w-full p-3 my-3 flex items-center justify-between rounded-lg border ">
 			<Link href={"/"}>
-				{theme === "dark" ? (
-					<Image
-						src={"/assets/logo-light.svg"}
-						width={0}
-						height={0}
-						className="w-24"
-						alt="Logo escrito Thiago"
-					/>
-				) : (
+				{theme === "light" ? (
 					<Image
 						src={"/assets/logo-dark.svg"}
 						width={0}
 						height={0}
 						className="w-24"
 						alt="Logo escrito Thiago"
+						draggable={false}
+					/>
+				) : (
+					<Image
+						src={"/assets/logo-light.svg"}
+						width={0}
+						height={0}
+						className="w-24"
+						alt="Logo escrito Thiago"
+						draggable={false}
 					/>
 				)}
 			</Link>
@@ -37,7 +39,7 @@ const Navbar = () => {
 					</Link>
 				</li>
 				<li>
-					<Link href={"/"} className="hover:text-muted-foreground">
+					<Link href={"/about"} className="hover:text-muted-foreground">
 						About
 					</Link>
 				</li>
