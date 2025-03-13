@@ -1,6 +1,6 @@
 import NextjsIcon from "@/components/common/NextjsIcon";
 import { Button } from "@/components/ui/button";
-import { Codepen, FileDown, Github, Linkedin } from "lucide-react";
+import { Codepen, FileDown, Github, Linkedin, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -333,11 +333,78 @@ export default function Home() {
 							anime series, share programming insights, or engage in epic gaming
 							quests.
 						</p>
-						<Button className="mt-3">
+						<Button className="mt-3 hover:-rotate-6">
 							<FileDown /> Download Cv
 						</Button>
 					</div>
-					<div className="w-1/2">last project</div>
+					<div className="w-1/2 p-16 pt-0">
+						<h3 className="font-bold">Recent Projects</h3>
+						<div className="w-full h-3/4 flex flex-col gap-3 overflow-y-auto">
+							<div className="w-full flex mt-3 border p-3 rounded-sm">
+								<div>
+									<h4 className="font-semibold">Timerify</h4>
+									<p className="text-sm text-zinc-500">Updated 3 weeks ago</p>
+									<p className="mt-3 line-clamp-2 text-sm">
+										Timerify é uma aplicação web de pomodoro projetada para
+										aumentar sua produtividade durante estudos, trabalho ou
+										qualquer outra atividade que exija foco. Com uma interface
+										intuitiva e recursos perso…
+									</p>
+									<p className="inline-flex items-center mt-3 gap-1 text-sm text-zinc-500 hover:text-blue-400">
+										<Star className="size-4" /> 10
+									</p>
+								</div>
+								<Link
+									className="size-6 p-1 rounded-sm hover:bg-zinc-500/20"
+									href={"https://github.com/luizmacedo/timerify"}
+								>
+									<Github className="size-4" />
+								</Link>
+							</div>
+							<div className="w-full flex mt-3 border p-3 rounded-sm">
+								<div>
+									<h4 className="font-semibold">Timerify</h4>
+									<p className="text-sm text-zinc-500">Updated 3 weeks ago</p>
+									<p className="mt-3 line-clamp-2 text-sm">
+										Timerify é uma aplicação web de pomodoro projetada para
+										aumentar sua produtividade durante estudos, trabalho ou
+										qualquer outra atividade que exija foco. Com uma interface
+										intuitiva e recursos perso…
+									</p>
+									<p className="inline-flex items-center mt-3 gap-1 text-sm text-zinc-500 hover:text-blue-400">
+										<Star className="size-4" /> 10
+									</p>
+								</div>
+								<Link
+									className="size-6 p-1 rounded-sm hover:bg-zinc-500/20"
+									href={"https://github.com/luizmacedo/timerify"}
+								>
+									<Github className="size-4" />
+								</Link>
+							</div>
+							<div className="w-full flex mt-3 border p-3 rounded-sm">
+								<div>
+									<h4 className="font-semibold">Timerify</h4>
+									<p className="text-sm text-zinc-500">Updated 3 weeks ago</p>
+									<p className="mt-3 line-clamp-2 text-sm">
+										Timerify é uma aplicação web de pomodoro projetada para
+										aumentar sua produtividade durante estudos, trabalho ou
+										qualquer outra atividade que exija foco. Com uma interface
+										intuitiva e recursos perso…
+									</p>
+									<p className="inline-flex items-center mt-3 gap-1 text-sm text-zinc-500 hover:text-blue-400">
+										<Star className="size-4" /> 10
+									</p>
+								</div>
+								<Link
+									className="size-6 p-1 rounded-sm hover:bg-zinc-500/20"
+									href={"https://github.com/luizmacedo/timerify"}
+								>
+									<Github className="size-4" />
+								</Link>
+							</div>
+						</div>
+					</div>
 				</section>
 			</main>
 		</>
