@@ -1,5 +1,6 @@
 import NextjsIcon from "@/components/common/NextjsIcon";
-import { Codepen, Github, Linkedin } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Codepen, FileDown, Github, Linkedin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -82,7 +83,7 @@ export default function Home() {
 	];
 	return (
 		<>
-			<main>
+			<main className="mt-40">
 				<section>
 					<section className="relative z-10 w-full mt-20 flex items-center">
 						<div className="grow">
@@ -204,7 +205,7 @@ export default function Home() {
 										<img
 											key={stack.id}
 											src={stack.imgPath}
-											alt="Youtube Music Logo"
+											alt={`${stack.id} logo`}
 											width={0}
 											height={0}
 											className="w-12"
@@ -215,7 +216,7 @@ export default function Home() {
 										<img
 											key={stack.id}
 											src={stack.imgPath}
-											alt="Youtube Music Logo"
+											alt={`${stack.id} logo`}
 											width={0}
 											height={0}
 											className="w-12"
@@ -231,6 +232,112 @@ export default function Home() {
 							Blog (Under Construction)
 						</h3>
 					</div>
+				</section>
+				<section className="mt-16 flex">
+					<div className="w-1/2">
+						<h3 className="inline-flex items-center text-xl font-semibold ">
+							<img
+								src="/assets/ghost.gif"
+								alt="Pixel art ghost gif"
+								className="size-10"
+							/>{" "}
+							Hello World
+						</h3>
+						<p className="mt-3">
+							I'm Thiago Fidêncio, a{" "}
+							<span className="font-bold">full-stack</span> developer residing
+							in Brazil.
+						</p>
+
+						<p className="mt-3">
+							Since I was a child, I've always been interested in
+							<span className="font-bold"> games</span> and
+							<span className="font-bold"> technology</span>. I've always liked
+							creating something from scratch and understanding how things work.
+						</p>
+
+						<p className="mt-3">
+							I believe that creating{" "}
+							<span className="font-bold"> logical</span> and
+							<span className="font-bold"> creative</span> solutions is one of
+							the factors that most attracts me to embark on a journey into the
+							world of coding and software development.
+						</p>
+
+						<p className=" flexmt-3">
+							My days are filled with lines of code, where I'm constantly
+							exploring new ways to{" "}
+							<span className="font-bold"> solve problems</span> and{" "}
+							<span className="font-bold"> create innovative </span>
+							solutions using technologies such as{" "}
+							<Link
+								href={"https://react.dev/"}
+								target="_blank"
+								className="inline-flex items-center p-1 gap-1 border rounded-md hover:bg-blue-400/20"
+							>
+								<img
+									src="/assets/react.png"
+									alt="React logo"
+									className="size-3"
+								/>{" "}
+								react
+							</Link>
+							,{" "}
+							<Link
+								href={"https://www.typescriptlang.org/"}
+								target="_blank"
+								className="inline-flex items-center p-1 gap-1 border rounded-md hover:bg-blue-400/20"
+							>
+								<img
+									src="/assets/typescript.png"
+									alt="Typescript logo"
+									className="size-3"
+								/>{" "}
+								typescript
+							</Link>
+							,{" "}
+							<Link
+								href={"https://tailwindcss.com/"}
+								target="_blank"
+								className="inline-flex items-center p-1 gap-1 border rounded-md hover:bg-blue-400/20"
+							>
+								<img
+									src="/assets/tailwind.png"
+									alt="Tailwindcss logo"
+									className="size-3"
+								/>{" "}
+								tailwindcss
+							</Link>{" "}
+							among others.
+						</p>
+
+						<p className="mt-3">
+							See more{" "}
+							<Link
+								className="font-bold text-blue-400 underline"
+								href={"/about"}
+							>
+								about me
+							</Link>{" "}
+							or my{" "}
+							<Link
+								className="font-bold text-blue-400 underline"
+								href={"/projects"}
+							>
+								projects
+							</Link>
+							.
+						</p>
+						<p className="mt-3">
+							Feel free to connect with me, whether it's to discuss the latest
+							anime series, share programming insights, or engage in epic gaming
+							quests.
+						</p>
+						<Button className="mt-3">
+							<FileDown /> Download Cv
+						</Button>
+					</div>
+					<div className="w-1/2">last project</div>
 				</section>
 			</main>
 		</>
