@@ -12,7 +12,7 @@ const NextjsIcon = () => {
 					? "/assets/nextjs-dark.png"
 					: "/assets/nextjs-light.png"
 			}
-			alt="Youtube Music Logo"
+			alt="NextJs Logo"
 			width={0}
 			height={0}
 			className="w-12"
