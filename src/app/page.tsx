@@ -265,7 +265,7 @@ export default function Home() {
 							world of coding and software development.
 						</p>
 
-						<p className=" flexmt-3">
+						<p className="mt-3">
 							My days are filled with lines of code, where I'm constantly
 							exploring new ways to{" "}
 							<span className="font-bold"> solve problems</span> and{" "}
@@ -334,13 +334,16 @@ export default function Home() {
 							anime series, share programming insights, or engage in epic gaming
 							quests.
 						</p>
-						<Button className="mt-3 hover:-rotate-6">
-							<FileDown /> Download Cv
-						</Button>
+						<Link
+							href={"/"}
+							className="flex w-fit px-3 py-2 gap-2 rounded-md mt-3 hover:-rotate-6 hover:bg-primary/90 bg-foreground text-background text-sm"
+						>
+							<FileDown className="size-4" /> Download Cv
+						</Link>
 					</div>
-					<div className="w-1/2 p-16 pt-0">
+					<div className="w-1/2 pl-16 ">
 						<h3 className="font-bold">Recent Projects</h3>
-						<div className="w-full h-3/4 flex flex-col gap-3 overflow-y-auto">
+						<div className="w-full h-3/4 mt-3 flex flex-col items-end gap-3 overflow-y-auto">
 							<div className="w-full flex mt-3 border p-3 rounded-sm">
 								<div>
 									<h4 className="font-semibold">Timerify</h4>
