@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/contexts/theme-provider";
 import Navbar from "@/components/template/Navbar";
 import Command from "@/components/template/Command";
+import Footer from "@/components/template/Footer";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
 						<Navbar />
 					</header>
 					{children}
+					<Footer />
 					<Command />
 				</ThemeProvider>
 			</body>
