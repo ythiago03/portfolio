@@ -1,6 +1,7 @@
 import NextjsIcon from "@/components/common/NextjsIcon";
+import Typewriter from "@/components/template/Typewriter";
 import { Button } from "@/components/ui/button";
-import { Codepen, FileDown, Github, Linkedin, Star } from "lucide-react";
+import { Codepen, FileDown, Github, Linkedin, Star, Type } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -88,7 +89,7 @@ export default function Home() {
 					<section className="relative z-10 w-full mt-20 flex items-center">
 						<div className="grow">
 							<h1 className="text-7xl font-extrabold">Thiago Fidêncio,</h1>
-							<p className="text-3xl mt-4">Frontend Developer</p>
+							<Typewriter />
 						</div>
 						<div className="grow flex justify-end">
 							<Image
