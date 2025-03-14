@@ -10,7 +10,7 @@ const Navbar = () => {
 	const { theme } = useTheme();
 
 	return (
-		<nav className="w-full p-3 my-3 flex items-center justify-between rounded-lg border ">
+		<nav className="fixed top-3 z-20 bg-background w-2/3 p-3 flex items-center justify-between rounded-lg">
 			<Link href={"/"}>
 				{theme === "light" ? (
 					<Image
