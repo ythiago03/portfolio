@@ -16,7 +16,8 @@ const GithubCard = ({ repo }: { repo: RepoInfo }) => {
 			</div>
 			<Link
 				className="size-6 ml-auto p-1 rounded-sm hover:bg-zinc-500/20"
-				href={"/"}
+				href={repo.link}
+				target="_blank"
 			>
 				<Github className="size-4" />
 			</Link>
