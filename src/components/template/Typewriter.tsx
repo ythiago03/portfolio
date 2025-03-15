@@ -17,7 +17,7 @@ const Typewriter = () => {
 			]}
 			wrapper="span"
 			speed={50}
-			className="text-2xl mt-6 inline-block"
+			className="text-2xl h-20 mt-6 inline-block"
 			repeat={Number.POSITIVE_INFINITY}
 		/>
 	);
