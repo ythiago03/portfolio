@@ -1,3 +1,4 @@
+import ToggleCommand from "@/components/common/ToggleCommand";
 import GithubCard from "@/components/template/GithubCard";
 import HomeCards from "@/components/template/HomeCards";
 import Typewriter from "@/components/template/Typewriter";
@@ -41,15 +42,8 @@ export default async function Home() {
 						color: "var(--foreground)",
 					}}
 				/>
-				<div className="mt-16 w-fit mx-auto">
-					<p>
-						Press{" "}
-						<span className="pointer-events-none text-sm p-1.5 text-muted-foreground bg-muted rounded border font-mono">
-							Ctrl + K
-						</span>{" "}
-						to explore
-					</p>
-				</div>
+
+				<ToggleCommand />
 			</section>
 			<HomeCards />
 			<section className="mt-16 flex flex-col lg:flex-row">
