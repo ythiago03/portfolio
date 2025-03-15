@@ -1,11 +1,15 @@
 import GithubCard from "@/components/template/GithubCard";
 import HomeCards from "@/components/template/HomeCards";
 import Typewriter from "@/components/template/Typewriter";
-import { FileDown, Github, Star } from "lucide-react";
+import GithubService from "@/services/githubService";
+import { FileDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+	const githubService = new GithubService("ythiago03");
+	const latestRepos = await githubService.getLastUpdateds();
+
 	return (
 		<main className="mt-40">
 			<section>
@@ -152,10 +156,9 @@ export default function Home() {
 				<div className="w-1/2 pl-16 ">
 					<h3 className="font-bold">Recent Projects</h3>
 					<div className="w-full h-3/4 mt-3 flex flex-col items-end gap-3 overflow-y-auto">
-						<GithubCard />
-						<GithubCard />
-						<GithubCard />
-						<GithubCard />
+						{latestRepos.map((repo) => (
+							<GithubCard key={repo.name} repo={repo} />
+						))}
 					</div>
 				</div>
 			</section>
