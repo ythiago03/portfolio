@@ -89,7 +89,7 @@ const HomeCards = async () => {
 
 	return (
 		<section className="mt-16 grid grid-cols-5 gap-3">
-			<CardHome className="col-span-5 bg-[url('/assets/penguin.gif')] sm:col-span-2 xl:col-span-2">
+			<CardHome className="col-span-5 border-none bg-[url('/assets/penguin.gif')] sm:col-span-2 xl:col-span-2">
 				<Link
 					href={"https://github.com/ythiago03"}
 					target="_blank"
@@ -130,7 +130,7 @@ const HomeCards = async () => {
 						"https://music.youtube.com/watch?v=UggO16V62PY&si=VCMGMuZ4k6NBKe60"
 					}
 					target="_blank"
-					className="w-full h-full p-4 flex flex-col justify-between bg-black/50 hover:bg-black/80 duration-300 ease-out hover:ease-in"
+					className="w-full h-full p-4 flex flex-col justify-between duration-300 ease-out hover:ease-in"
 				>
 					<div className="flex justify-between items-center">
 						<img
@@ -148,7 +148,7 @@ const HomeCards = async () => {
 							</div>
 						</div>
 					</div>
-					<span className="absolute mx-auto left-0 right-0 -bottom-15  block size-48 animate-[spin_30s_linear_infinite]  rounded-full overflow-hidden border bg-[url('/assets/song-cover.jpg')] bg-cover bg-center shadow-[0px_0px_60px_0px_rgba(247,_250,_252,_0.4)]" />
+					<span className="absolute mx-auto left-0 right-0 -bottom-15  block size-48 animate-[spin_30s_linear_infinite]  rounded-full overflow-hidden border bg-[url('/assets/song-cover.jpg')] bg-cover bg-center shadow-[0px_0px_40px_0px_rgba(0,_0,_0,_0.4)] dark:shadow-[0px_0px_40px_0px_rgba(247,_250,_252,_0.4)]" />
 				</Link>
 			</CardHome>
 			<CardHome className="col-span-3 lg:col-span-2 xl:col-span-3 border-0 hover:scale-none">
