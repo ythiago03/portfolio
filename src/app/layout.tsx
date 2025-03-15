@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/contexts/theme-provider";
 import Navbar from "@/components/template/Navbar";
 import Command from "@/components/template/Command";
 import Footer from "@/components/template/Footer";
+import { CommandProvider } from "@/contexts/command-context";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 
@@ -29,12 +30,14 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
-					<header>
-						<Navbar />
-					</header>
-					{children}
-					<Footer />
-					<Command />
+					<CommandProvider>
+						<header>
+							<Navbar />
+						</header>
+						{children}
+						<Footer />
+						<Command />
+					</CommandProvider>
 				</ThemeProvider>
 			</body>
 		</html>
