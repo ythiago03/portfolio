@@ -89,7 +89,7 @@ const HomeCards = async () => {
 
 	return (
 		<section className="mt-16 grid grid-cols-5 gap-3">
-			<CardHome className="col-span-2 bg-[url('/assets/penguin.gif')]">
+			<CardHome className="col-span-5 bg-[url('/assets/penguin.gif')] sm:col-span-2 xl:col-span-2">
 				<Link
 					href={"https://github.com/ythiago03"}
 					target="_blank"
@@ -102,7 +102,7 @@ const HomeCards = async () => {
 					</div>
 				</Link>
 			</CardHome>
-			<CardHome className="col-span-2 bg-[url('/assets/github-commits.png')]">
+			<CardHome className="col-span-5 bg-[url('/assets/github-commits.png')] sm:col-span-3 xl:col-span-2">
 				<Link
 					href={"https://github.com/ythiago03?tab=repositories"}
 					target="_blank"
@@ -124,34 +124,34 @@ const HomeCards = async () => {
 					</div>
 				</Link>
 			</CardHome>
-			<CardHome className="">
+			<CardHome className="relative col-span-2 lg:col-span-1">
 				<Link
 					href={
 						"https://music.youtube.com/watch?v=UggO16V62PY&si=VCMGMuZ4k6NBKe60"
 					}
 					target="_blank"
-					className="w-full h-full relative p-4 flex flex-col justify-between bg-black/50 hover:bg-black/80  duration-300 ease-out hover:ease-in"
+					className="w-full h-full p-4 flex flex-col justify-between bg-black/50 hover:bg-black/80 duration-300 ease-out hover:ease-in"
 				>
-					<img
-						src="/assets/youtube.png"
-						alt="Youtube Music Logo"
-						width={0}
-						height={0}
-						className="size-6"
-					/>
-					<div className="absolute bottom-14 -left-11 overflow-hidden w-2/3 -rotate-90">
-						<div className="marquee space-x-8">
-							<span className="whitespace-nowrap text-xl font-bold">
-								A Desire to disappear
-							</span>
+					<div className="flex justify-between items-center">
+						<img
+							src="/assets/youtube.png"
+							alt="Youtube Music Logo"
+							width={0}
+							height={0}
+							className="size-6"
+						/>
+						<div className="overflow-hidden w-2/3">
+							<div className="marquee space-x-8">
+								<span className="whitespace-nowrap text-xl font-bold">
+									A Desire to disappear
+								</span>
+							</div>
 						</div>
 					</div>
-					<span className="absolute -bottom-10 -right-10 block size-48 animate-spin duration-50000 rounded-full overflow-hidden border bg-[url('/assets/song-cover.jpg')] bg-cover bg-center shadow-[0px_0px_60px_0px_rgba(247,_250,_252,_0.4)]">
-						<span className="absolute block top-0 right-0 bottom-0 left-0 m-auto rounded-full size-8 border-2 border-gray bg-black" />
-					</span>
+					<span className="absolute mx-auto left-0 right-0 -bottom-15  block size-48 animate-[spin_30s_linear_infinite]  rounded-full overflow-hidden border bg-[url('/assets/song-cover.jpg')] bg-cover bg-center shadow-[0px_0px_60px_0px_rgba(247,_250,_252,_0.4)]" />
 				</Link>
 			</CardHome>
-			<CardHome className="col-span-3 border-0 hover:scale-none">
+			<CardHome className="col-span-3 lg:col-span-2 xl:col-span-3 border-0 hover:scale-none">
 				<div className="w-full h-full grid grid-cols-2 gap-3">
 					<Link
 						href={"https://www.linkedin.com/in/ythiago03/"}
@@ -197,7 +197,7 @@ const HomeCards = async () => {
 					</div>
 				</div>
 			</CardHome>
-			<CardHome className="col-span-2">
+			<CardHome className="col-span-5 lg:col-span-2 xl:col-span-2">
 				<h3 className="text-2xl -rotate-10 font-semibold">
 					Blog (Under Construction)
 				</h3>
