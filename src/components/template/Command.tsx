@@ -12,29 +12,30 @@ import {
 } from "@/components/ui/command";
 import { Calculator, Calendar, House, Smile, User } from "lucide-react";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useCommand } from "@/contexts/command-context";
 
 const Command = () => {
-	const [open, setOpen] = useState(false);
+	const { open, setIsOpen } = useCommand();
 	const router = useRouter();
 
 	useEffect(() => {
 		const down = (e: KeyboardEvent) => {
 			if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
 				e.preventDefault();
-				setOpen((open) => !open);
+				setIsOpen((open) => !open);
 			}
 
 			if (e.key === "b" && (e.metaKey || e.ctrlKey)) {
 				e.preventDefault();
-				setOpen((open) => !open);
+				setIsOpen((open) => !open);
 				router.push("/");
 			}
 
 			if (e.key === "p" && (e.metaKey || e.ctrlKey)) {
 				e.preventDefault();
-				setOpen((open) => !open);
+				setIsOpen((open) => !open);
 				router.push("/about");
 			}
 		};
@@ -44,7 +45,7 @@ const Command = () => {
 
 	return (
 		<>
-			<CommandDialog open={open} onOpenChange={setOpen}>
+			<CommandDialog open={open} onOpenChange={setIsOpen}>
 				<CommandInput placeholder="Type a command or search..." />
 				<CommandList>
 					<CommandEmpty>No results found.</CommandEmpty>
@@ -67,7 +68,7 @@ const Command = () => {
 						<CommandItem
 							onSelect={() => {
 								router.push("/");
-								setOpen(false);
+								setIsOpen(false);
 							}}
 						>
 							<House />
@@ -77,7 +78,7 @@ const Command = () => {
 						<CommandItem
 							onSelect={() => {
 								router.push("/about");
-								setOpen(false);
+								setIsOpen(false);
 							}}
 						>
 							<User />
