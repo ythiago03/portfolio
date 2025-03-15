@@ -1,6 +1,7 @@
 import GithubCard from "@/components/template/GithubCard";
 import HomeCards from "@/components/template/HomeCards";
 import Typewriter from "@/components/template/Typewriter";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import GithubService from "@/services/githubService";
 import { FileDown } from "lucide-react";
 import Image from "next/image";
@@ -157,11 +158,13 @@ export default async function Home() {
 				</div>
 				<div className="w-full pt-16 lg:w-1/2 lg:pt-0 lg:pl-16 ">
 					<h3 className="font-bold">Recent Projects</h3>
-					<div className="w-full h-3/4 mt-3 flex flex-col items-end gap-3 overflow-y-auto">
+					<ScrollArea className="w-full h-3/4 mt-3 px-3 flex flex-col items-end gap-3">
 						{latestRepos.map((repo) => (
 							<GithubCard key={repo.name} repo={repo} />
 						))}
-					</div>
+					</ScrollArea>
+					{/* <div className="w-full h-3/4 mt-3 flex flex-col items-end gap-3 overflow-y-auto">
+					</div> */}
 				</div>
 			</section>
 		</main>
