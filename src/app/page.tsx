@@ -15,17 +15,19 @@ export default async function Home() {
 			<section>
 				<section className="relative z-10 w-full mt-20 flex items-center">
 					<div className="grow">
-						<h1 className="text-7xl font-extrabold">Thiago Fidêncio,</h1>
+						<h1 className="text-6xl md:text-7xl font-extrabold">
+							Thiago Fidêncio,
+						</h1>
 						<Typewriter />
 					</div>
-					<div className="grow flex justify-end">
+					<div className="w-full opacity-40 -z-1 blur-[1px] absolute md:opacity-100 md:w-auto md:blur-none md:z-0 md:relative md:left-0 grow flex justify-end">
 						<Image
 							unoptimized
 							src={"/assets/lain.gif"}
 							alt="Serial Experiments Lain gif"
 							width={0}
 							height={0}
-							className="size-10/12"
+							className="mx-auto size-1/2 md:size-10/12"
 							draggable={false}
 						/>
 					</div>
@@ -49,8 +51,8 @@ export default async function Home() {
 				</div>
 			</section>
 			<HomeCards />
-			<section className="mt-16 flex">
-				<div className="w-1/2">
+			<section className="mt-16 flex flex-col lg:flex-row">
+				<div className="w-full lg:w-1/2">
 					<h3 className="inline-flex items-center text-xl font-semibold ">
 						<img
 							src="/assets/ghost.gif"
@@ -153,7 +155,7 @@ export default async function Home() {
 						<FileDown className="size-4" /> Download Cv
 					</Link>
 				</div>
-				<div className="w-1/2 pl-16 ">
+				<div className="w-full pt-16 lg:w-1/2 lg:pt-0 lg:pl-16 ">
 					<h3 className="font-bold">Recent Projects</h3>
 					<div className="w-full h-3/4 mt-3 flex flex-col items-end gap-3 overflow-y-auto">
 						{latestRepos.map((repo) => (
