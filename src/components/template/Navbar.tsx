@@ -1,13 +1,16 @@
 "use client";
 
 import React from "react";
-import { ToggleTheme } from "@/components/template/ToggleTheme";
+import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { useTheme } from "next-themes";
+
+import { ToggleTheme } from "@/components/template/ToggleTheme";
 
 const Navbar = () => {
 	const { theme } = useTheme();
+	const pathname = usePathname();
 
 	return (
 		<nav className="fixed top-3 z-20 bg-background w-2/3 p-3 flex items-center justify-between rounded-lg">
@@ -34,22 +37,34 @@ const Navbar = () => {
 			</Link>
 			<ul className="flex items-center gap-3">
 				<li>
-					<Link href={"/"} className="hover:text-muted-foreground">
+					<Link
+						href={"/"}
+						className={`${pathname === "/" ? "text-foreground" : "text-muted-foreground"} hover:text-foreground`}
+					>
 						Home
 					</Link>
 				</li>
 				<li>
-					<Link href={"/about"} className="hover:text-muted-foreground">
+					<Link
+						href={"/about"}
+						className={`${pathname === "/about" ? "text-foreground" : "text-muted-foreground"} hover:text-foreground`}
+					>
 						About
 					</Link>
 				</li>
 				<li>
-					<Link href={"/"} className="hover:text-muted-foreground">
+					<Link
+						href={"/projects"}
+						className={`${pathname === "/projects" ? "text-foreground" : "text-muted-foreground"} hover:text-foreground`}
+					>
 						Projects
 					</Link>
 				</li>
 				<li>
-					<Link href={"/"} className="hover:text-muted-foreground">
+					<Link
+						href={"/blog"}
+						className={`${pathname === "/blog" ? "text-foreground" : "text-muted-foreground"} hover:text-foreground`}
+					>
 						Blog
 					</Link>
 				</li>
