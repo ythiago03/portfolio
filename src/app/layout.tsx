@@ -21,7 +21,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={`${openSans.className} !p-0  w-2/3 !mx-auto antialiased`}
+				className={`${openSans.className} !p-0  w-10/12 !mx-auto antialiased  sm:w-2/3`}
 			>
 				<ThemeProvider
 					attribute="class"
