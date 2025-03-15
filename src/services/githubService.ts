@@ -87,7 +87,7 @@ class GithubService {
 					updatedAt,
 					starts: repo.stargazers_count,
 					forks: repo.forks,
-					link: repo.url,
+					link: repo.html_url,
 					description: repo.description ?? "",
 				};
 
