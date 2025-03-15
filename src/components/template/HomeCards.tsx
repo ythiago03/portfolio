@@ -5,13 +5,14 @@ import CardHome from "../common/CardHome";
 import NextjsIcon from "../common/NextjsIcon";
 
 import { Codepen, Github, Linkedin } from "lucide-react";
+import GithubService from "@/services/githubService";
 
 interface Stack {
 	id: string;
 	imgPath: string;
 }
 
-const HomeCards = () => {
+const HomeCards = async () => {
 	const stacks: Stack[] = [
 		{
 			id: "angular",
@@ -83,6 +84,9 @@ const HomeCards = () => {
 			imgPath: "/assets/typescript.png",
 		},
 	];
+	const githubService = new GithubService("ythiago03");
+	const userInfo = await githubService.getProfileInfo();
+
 	return (
 		<section className="mt-16 grid grid-cols-5 gap-3">
 			<CardHome className="col-span-2 bg-[url('/assets/penguin.gif')]">
@@ -106,13 +110,16 @@ const HomeCards = () => {
 				>
 					<div className="w-full flex justify-between text-white">
 						<p>
-							<span className="font-semibold">Stars:</span> 12
+							<span className="font-semibold">Stars:</span>{" "}
+							{userInfo.totalStarts}
 						</p>
 						<p>
-							<span className="font-semibold">Commits:</span> 1.112
+							<span className="font-semibold">Followers:</span>{" "}
+							{userInfo.totalFollowers}
 						</p>
 						<p>
-							<span className="font-semibold">Repos:</span> 230
+							<span className="font-semibold">Repos:</span>{" "}
+							{userInfo.totalRepos}
 						</p>
 					</div>
 				</Link>
