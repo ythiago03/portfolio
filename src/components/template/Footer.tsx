@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer = () => {
 	return (
-		<footer className="flex justify-between border-t py-10">
+		<footer className="flex justify-between border-t mt-10 py-10">
 			<Link
 				href={"https://github.com/ythiago03/portfolio"}
 				target="_blank"
