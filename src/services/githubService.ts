@@ -89,6 +89,9 @@ class GithubService {
 					forks: repo.forks,
 					link: repo.html_url,
 					description: repo.description ?? "",
+					language: repo.language ?? "",
+					license: repo.license?.name ?? "",
+					projectUrl: repo.homepage ?? "",
 				};
 
 				response.push(repoInfo);
@@ -102,6 +105,9 @@ class GithubService {
 				starts: 0,
 				forks: 0,
 				link: "https://github.com/ythiago03/portfolio",
+				language: "TypeScript",
+				license: "MIT",
+				projectUrl: "",
 			};
 			console.error(e);
 			return [defaultRepo];

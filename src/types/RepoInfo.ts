@@ -5,6 +5,9 @@ interface RepoInfo {
 	forks: number;
 	link: string;
 	description: string;
+	language: string;
+	license: string;
+	projectUrl: string;
 }
 
 export default RepoInfo;
