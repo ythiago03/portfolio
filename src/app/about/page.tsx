@@ -1,5 +1,5 @@
 import {
-	AudioLines,
+	Brain,
 	Clapperboard,
 	FileDown,
 	Gamepad2,
@@ -8,15 +8,124 @@ import {
 	Trophy,
 	UserPlus,
 } from "lucide-react";
+
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from "@/components/ui/accordion";
+
 import Link from "next/link";
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
+interface Stack {
+	id: string;
+	imgPath: string;
+}
+
 function page() {
+	const usedAtWorkStaks: Stack[] = [
+		{
+			id: "css",
+			imgPath: "/assets/css.png",
+		},
+		{
+			id: "docker",
+			imgPath: "/assets/docker.png",
+		},
+		{
+			id: "figma",
+			imgPath: "/assets/figma.png",
+		},
+		{
+			id: "html",
+			imgPath: "/assets/html.png",
+		},
+		{
+			id: "ionic",
+			imgPath: "/assets/ionic.png",
+		},
+		{
+			id: "javascript",
+			imgPath: "/assets/javascript.png",
+		},
+		{
+			id: "mysql",
+			imgPath: "/assets/mysql.png",
+		},
+		{
+			id: "nodejs",
+			imgPath: "/assets/nodejs.png",
+		},
+
+		{
+			id: "react",
+			imgPath: "/assets/react.png",
+		},
+		{
+			id: "tailwind",
+			imgPath: "/assets/tailwind.png",
+		},
+		{
+			id: "typescript",
+			imgPath: "/assets/typescript.png",
+		},
+	];
+	const haveKnownledgeStaks: Stack[] = [
+		{
+			id: "angular",
+			imgPath: "/assets/angular.png",
+		},
+
+		{
+			id: "java",
+			imgPath: "/assets/java.png",
+		},
+
+		{
+			id: "scss",
+			imgPath: "/assets/scss.png",
+		},
+		{
+			id: "spring",
+			imgPath: "/assets/spring.png",
+		},
+	];
+	const learningStaks: Stack[] = [
+		{
+			id: "azure",
+			imgPath: "/assets/azure.png",
+		},
+
+		{
+			id: "firebase",
+			imgPath: "/assets/firebase.png",
+		},
+	];
+	const otherStaks: Stack[] = [
+		{
+			id: "azure",
+			imgPath: "/assets/azure.png",
+		},
+
+		{
+			id: "firebase",
+			imgPath: "/assets/firebase.png",
+		},
+	];
+
+	const stacks: Stack[] = [];
 	return (
 		<main className="mt-40">
-			<section className="flex gap-3">
-				<div className="w-1/4 h-96 bg-[url('/assets/user-photo.jpg')] bg-cover bg-center rounded-lg shadow-sm" />
+			<section className="flex mt-20 gap-3">
+				<div
+					className="group relative w-1/4 h-96 shadow-sm rounded-lg transition-transform duration-300 hover:rotate-x-6 hover:rotate-y-6 hover:scale-105"
+					style={{ perspective: "1000px" }}
+				>
+					<div className="h-full w-full bg-[url('/assets/user-photo.jpg')] bg-cover bg-center rounded-lg shadow-sm transform transition-transform duration-300 group-hover:rotate-x-6 group-hover:rotate-y-6" />
+				</div>
 				<div className="space-y-3 w-3/4">
 					<h1 className="text-center text-6xl md:text-7xl font-extrabold">
 						About me
@@ -62,7 +171,7 @@ function page() {
 					</div>
 				</div>
 			</section>
-			<div className="grid grid-cols-1 gap-3 mt-10 sm:grid-cols-2 lg:grid-cols-3">
+			<section className="grid grid-cols-1 gap-3 mt-20 sm:grid-cols-2 lg:grid-cols-3">
 				<div className="w-full h-32 flex flex-col gap-3 p-1 justify-center items-center rounded-lg bg-muted/20 shadow-sm">
 					<div className="flex items-center gap-3 text-lg font-semibold">
 						<UserPlus /> Followers
@@ -149,7 +258,94 @@ function page() {
 						Sewersvlt
 					</Link>
 				</div>
-			</div>
+			</section>
+			<section className="mt-20">
+				<h2 className="flex items-center gap-3 text-2xl font-semibold">
+					<Brain /> Skills
+				</h2>
+				<Accordion type="single" collapsible className="w-full mt-10">
+					<AccordionItem value="item-1">
+						<AccordionTrigger className="text-2xl">
+							I use it at work
+						</AccordionTrigger>
+						<AccordionContent className="flex gap-3 flex-wrap">
+							{usedAtWorkStaks.map((stack: Stack) => (
+								<div
+									key={stack.id}
+									className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm"
+								>
+									<img
+										className="w-6"
+										src={stack.imgPath}
+										alt={`${stack.id} logo`}
+									/>
+									{stack.id}
+								</div>
+							))}
+						</AccordionContent>
+					</AccordionItem>
+					<AccordionItem value="item-2">
+						<AccordionTrigger className="text-2xl">
+							I have knowledge
+						</AccordionTrigger>
+						<AccordionContent className="flex gap-3 flex-wrap">
+							{haveKnownledgeStaks.map((stack: Stack) => (
+								<div
+									key={stack.id}
+									className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm"
+								>
+									<img
+										className="w-6"
+										src={stack.imgPath}
+										alt={`${stack.id} logo`}
+									/>
+									{stack.id}
+								</div>
+							))}
+						</AccordionContent>
+					</AccordionItem>
+					<AccordionItem value="item-3">
+						<AccordionTrigger className="text-2xl">
+							I am studying
+						</AccordionTrigger>
+						<AccordionContent className="flex gap-3 flex-wrap">
+							{learningStaks.map((stack: Stack) => (
+								<div
+									key={stack.id}
+									className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm"
+								>
+									<img
+										className="w-6"
+										src={stack.imgPath}
+										alt={`${stack.id} logo`}
+									/>
+									{stack.id}
+								</div>
+							))}
+						</AccordionContent>
+					</AccordionItem>
+					<AccordionItem value="item-4">
+						<AccordionTrigger className="text-2xl">
+							I know a little
+						</AccordionTrigger>
+						<AccordionContent className="flex gap-3 flex-wrap">
+							{otherStaks.map((stack: Stack) => (
+								<div
+									key={stack.id}
+									className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm"
+								>
+									<img
+										className="w-6"
+										src={stack.imgPath}
+										alt={`${stack.id} logo`}
+									/>
+									{stack.id}
+								</div>
+							))}
+						</AccordionContent>
+					</AccordionItem>
+				</Accordion>
+			</section>
 		</main>
 	);
 }
