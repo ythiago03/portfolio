@@ -1,5 +1,7 @@
-import { ExternalLink } from "lucide-react";
+import { ArrowBigUp, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { Button } from "../ui/button";
+import ScrollToTop from "./ScrollToTop";
 
 const Footer = () => {
 	return (
@@ -23,8 +25,9 @@ const Footer = () => {
 				>
 					Thiago Fidêncio
 				</Link>
-				.
+				.{" "}
 			</p>
+			<ScrollToTop />
 		</footer>
 	);
 };
