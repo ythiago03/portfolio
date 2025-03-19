@@ -28,6 +28,8 @@ import Link from "next/link";
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import GithubService from "@/services/githubService";
+import ExibitionCard from "@/components/common/ExibitionCard";
+import AboutCard from "@/components/common/AboutCard";
 
 interface Stack {
 	id: string;
@@ -183,10 +185,7 @@ async function page() {
 				</div>
 			</section>
 			<section className="grid grid-cols-1 gap-3 mt-20 sm:grid-cols-2 lg:grid-cols-3">
-				<div className="w-full h-32 flex flex-col gap-3 p-1 justify-center items-center rounded-lg bg-muted/20 shadow-sm">
-					<div className="flex items-center gap-3 text-lg font-semibold">
-						<UserPlus /> Followers
-					</div>
+				<ExibitionCard title="Followers" icon={UserPlus}>
 					<div className="text-muted-foreground flex gap-3">
 						<div className="flex translate-x-2">
 							{followersList.followers.map((follower, i) => (
@@ -203,23 +202,14 @@ async function page() {
 							+ {followersList.amountOfFollowers - 5}
 						</span>
 					</div>
-				</div>
-				<div className="w-full h-32 flex flex-col gap-3 p-1 justify-center items-center rounded-lg bg-muted/20 shadow-sm">
-					<div className="flex items-center gap-3 text-lg font-semibold">
-						<Star /> Starts
-					</div>
+				</ExibitionCard>
+				<ExibitionCard title="Stars" icon={Star}>
 					<div className="text-muted-foreground">5</div>
-				</div>
-				<div className="w-full h-32 flex flex-col gap-3 p-1 justify-center items-center rounded-lg bg-muted/20 shadow-sm">
-					<div className="flex items-center gap-3 text-lg font-semibold">
-						<GitGraph /> Commits
-					</div>
+				</ExibitionCard>
+				<ExibitionCard title="Commits" icon={GitGraph}>
 					<div className="text-muted-foreground">1,954</div>
-				</div>
-				<div className="w-full h-32 flex flex-col gap-3 p-1 justify-center items-center rounded-lg bg-muted/20 shadow-sm">
-					<div className="flex items-center gap-3 text-lg font-semibold">
-						<Clapperboard /> Top Anime
-					</div>
+				</ExibitionCard>
+				<ExibitionCard title="Top Anime" icon={Clapperboard}>
 					<Link
 						href={
 							"https://www.youtube.com/watch?v=OhNwckCLzis&ab_channel=CowboyBebopHD"
@@ -229,11 +219,8 @@ async function page() {
 					>
 						Cowboy Bebop
 					</Link>
-				</div>
-				<div className="w-full h-32 flex flex-col gap-3 p-1 justify-center items-center rounded-lg bg-muted/20 shadow-sm">
-					<div className="flex items-center gap-3 text-lg font-semibold">
-						<Gamepad2 /> Top Game
-					</div>
+				</ExibitionCard>
+				<ExibitionCard title="Top Game" icon={Gamepad2}>
 					<Link
 						href={"https://youtu.be/uHGShqcAHlQ?si=1BG3ZVfKi0YF36pd"}
 						target="_blank"
@@ -241,11 +228,8 @@ async function page() {
 					>
 						The Legend of Zelda: Tears of the Kingdom
 					</Link>
-				</div>
-				<div className="w-full h-32 flex flex-col gap-3 p-1 justify-center items-center rounded-lg bg-muted/20 shadow-sm">
-					<div className="flex items-center gap-3 text-lg font-semibold">
-						<Trophy /> Top Artist
-					</div>
+				</ExibitionCard>
+				<ExibitionCard title="Top Artist" icon={Trophy}>
 					<Link
 						href={
 							"https://music.youtube.com/channel/UCKGYsaY8I62fXzHhywZAG6w?si=4ygOHltfRVjAUeHN"
@@ -259,12 +243,9 @@ async function page() {
 						</Avatar>
 						Sewersvlt
 					</Link>
-				</div>
+				</ExibitionCard>
 			</section>
-			<section className="mt-20">
-				<h2 className="sticky top-20 w-full h-20 flex items-center gap-3 text-2xl font-semibold rounded-lg bg-background">
-					<Brain /> Skills
-				</h2>
+			<AboutCard title="Skills" icon={Brain}>
 				<Accordion type="single" collapsible className="w-full mt-10">
 					<AccordionItem value="item-1">
 						<AccordionTrigger className="text-2xl">
@@ -347,11 +328,8 @@ async function page() {
 						</AccordionContent>
 					</AccordionItem>
 				</Accordion>
-			</section>
-			<section className="mt-20">
-				<h2 className="sticky top-20 w-full h-20 flex items-center gap-3 text-2xl font-semibold rounded-lg bg-background">
-					<BriefcaseBusiness /> Expirence
-				</h2>
+			</AboutCard>
+			<AboutCard title="Expirence" icon={BriefcaseBusiness}>
 				<div className="mt-10">
 					<div className="w-full flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
 						<p>
@@ -373,10 +351,13 @@ async function page() {
 							</Link>
 						</div>
 						<p>
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-							Cupiditate quae laboriosam id eum ipsum eveniet amet quo expedita,
-							at voluptas atque maiores non nihil molestiae facere, ipsa odio!
-							Molestias, reiciendis?
+							Developed mobile applications using Capacitor and Cordova,
+							enabling cross-platform compatibility. Built and maintained web
+							applications with React and Next.js, ensuring a responsive and
+							dynamic user experience. Developed backend services with Node.js,
+							optimizing performance and scalability. Integrated applications
+							with IoT devices via Bluetooth, enabling real-time communication
+							and enhanced functionality.
 						</p>
 					</div>
 				</div>
@@ -436,11 +417,8 @@ async function page() {
 						</p>
 					</div>
 				</div>
-			</section>
-			<section className="mt-20">
-				<h2 className="sticky top-20 w-full h-20 flex items-center gap-3 text-2xl font-semibold rounded-lg bg-background">
-					<University /> Education
-				</h2>
+			</AboutCard>
+			<AboutCard title="Education" icon={University}>
 				<div className="mt-10">
 					<div className="w-full flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
 						<p>
@@ -460,25 +438,17 @@ async function page() {
 								Faculdade Descomplica
 							</Link>
 						</div>
-						<p>
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-							Cupiditate quae laboriosam id eum ipsum eveniet amet quo expedita,
-							at voluptas atque maiores non nihil molestiae facere, ipsa odio!
-							Molestias, reiciendis?
-						</p>
 					</div>
 				</div>
-			</section>
-			<section className="my-20">
-				<h2 className="sticky top-20 w-full h-20 flex items-center gap-3 text-2xl font-semibold rounded-lg bg-background">
-					<Phone /> Contact
-				</h2>
+			</AboutCard>
+			<AboutCard title="Contact" icon={Phone}>
 				<div className="mt-10 grid grid-cols-1 gap-3 md:grid-cols-2">
-					<div className="w-full h-25 flex flex-col gap-3 p-1 justify-center items-center rounded-lg bg-muted/20 shadow-sm">
-						<div className="flex items-center gap-3 text-xl text-muted-foreground">
-							<Mail />
-							Send an email
-						</div>
+					<ExibitionCard
+						title="Send an email"
+						icon={Mail}
+						variant="secondary"
+						className="h-25"
+					>
 						<Link
 							target="_blank"
 							href={"mailto:ythiagohcfidencio@gmail.com"}
@@ -486,12 +456,13 @@ async function page() {
 						>
 							ythiagohcfidencio@gmail.com
 						</Link>
-					</div>
-					<div className="w-full h-25 flex flex-col gap-3 p-1 justify-center items-center rounded-lg bg-muted/20 shadow-sm">
-						<div className="flex items-center gap-3 text-xl text-muted-foreground">
-							<Linkedin />
-							Conect with me
-						</div>
+					</ExibitionCard>
+					<ExibitionCard
+						title="Conect with me"
+						icon={Linkedin}
+						variant="secondary"
+						className="h-25"
+					>
 						<Link
 							target="_blank"
 							href={"https://www.linkedin.com/in/ythiago03/"}
@@ -499,12 +470,13 @@ async function page() {
 						>
 							ythiago03
 						</Link>
-					</div>
-					<div className="w-full h-25 flex flex-col gap-3 p-1 justify-center items-center rounded-lg bg-muted/20 shadow-sm">
-						<div className="flex items-center gap-3 text-xl text-muted-foreground">
-							<Github />
-							View my projects
-						</div>
+					</ExibitionCard>
+					<ExibitionCard
+						title="View my projects"
+						icon={Github}
+						variant="secondary"
+						className="h-25"
+					>
 						<Link
 							target="_blank"
 							href={"https://github.com/ythiago03"}
@@ -512,12 +484,13 @@ async function page() {
 						>
 							ythiago03
 						</Link>
-					</div>
-					<div className="w-full h-25 flex flex-col gap-3 p-1 justify-center items-center rounded-lg bg-muted/20 shadow-sm">
-						<div className="flex items-center gap-3 text-xl text-muted-foreground">
-							<Codepen />
-							View my pens
-						</div>
+					</ExibitionCard>
+					<ExibitionCard
+						title="View my pens"
+						icon={Codepen}
+						variant="secondary"
+						className="h-25"
+					>
 						<Link
 							target="_blank"
 							href={"https://codepen.io/Ythiago03"}
@@ -525,9 +498,9 @@ async function page() {
 						>
 							ythiago03
 						</Link>
-					</div>
+					</ExibitionCard>
 				</div>
-			</section>
+			</AboutCard>
 		</main>
 	);
 }
