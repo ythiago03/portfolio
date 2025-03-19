@@ -13,7 +13,7 @@ export default async function Home() {
 	const latestRepos = await githubService.getLastUpdateds();
 
 	return (
-		<main className="mt-40">
+		<main className="mt-40 mb-20">
 			<section>
 				<section className="relative z-10 w-full mt-20 flex items-center">
 					<div className="grow">
