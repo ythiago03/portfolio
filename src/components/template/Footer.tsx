@@ -1,9 +1,11 @@
-import { ExternalLink } from "lucide-react";
+import { ArrowBigUp, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { Button } from "../ui/button";
+import ScrollToTop from "./ScrollToTop";
 
 const Footer = () => {
 	return (
-		<footer className="flex flex-col items-center gap-3 text-center justify-between border-t mt-10 py-10 lg:flex-row">
+		<footer className="flex flex-col items-center gap-3 text-center justify-between border-t mt-auto py-10 lg:flex-row">
 			<Link
 				href={"https://github.com/ythiago03/portfolio"}
 				target="_blank"
@@ -23,8 +25,9 @@ const Footer = () => {
 				>
 					Thiago Fidêncio
 				</Link>
-				.
+				.{" "}
 			</p>
+			<ScrollToTop />
 		</footer>
 	);
 };

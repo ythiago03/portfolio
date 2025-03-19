@@ -1,3 +1,5 @@
+import type Follower from "@/types/Follower";
+import type IFollowers from "@/types/Ifollowers";
 import type RepoInfo from "@/types/RepoInfo";
 
 interface UserInfo {
@@ -111,6 +113,76 @@ class GithubService {
 			};
 			console.error(e);
 			return [defaultRepo];
+		}
+	}
+
+	async getFollowers(): Promise<IFollowers> {
+		try {
+			const followersResponse = await fetch(
+				`${this.URL}${this.userName}/followers?per_page=5`,
+				{
+					cache: "force-cache",
+					next: {
+						revalidate: 3600,
+					},
+				},
+			);
+			const userResponse = await fetch(`${this.URL}${this.userName}`, {
+				cache: "force-cache",
+				next: {
+					revalidate: 3600,
+				},
+			});
+
+			if (!followersResponse.ok || !userResponse.ok)
+				throw new Error("Failed to fetch repos");
+
+			const followersData = await followersResponse.json();
+			const userData = await userResponse.json();
+
+			const followersList: Follower[] = [];
+
+			// biome-ignore lint/complexity/noForEach: <explanation>
+			followersData.forEach((follower: any) => {
+				followersList.push({
+					login: follower.login,
+					avatar_url: follower.avatar_url,
+				});
+			});
+
+			const response = {
+				followers: followersList,
+				amountOfFollowers: userData.followers,
+			};
+			return response;
+		} catch (e) {
+			const defaultValue = {
+				followers: [
+					{
+						login: "user1",
+						avatar_url: "https://avatars.githubusercontent.com/u/10078979?v=1",
+					},
+					{
+						login: "user2",
+						avatar_url: "https://avatars.githubusercontent.com/u/10078979?v=1",
+					},
+					{
+						login: "user3",
+						avatar_url: "https://avatars.githubusercontent.com/u/10078979?v=1",
+					},
+					{
+						login: "user4",
+						avatar_url: "https://avatars.githubusercontent.com/u/10078979?v=1",
+					},
+					{
+						login: "user5",
+						avatar_url: "https://avatars.githubusercontent.com/u/10078979?v=1",
+					},
+				],
+				amountOfFollowers: 113,
+			};
+			console.error(e);
+			return defaultValue;
 		}
 	}
 }
