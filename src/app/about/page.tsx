@@ -27,13 +27,15 @@ import {
 import Link from "next/link";
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import GithubService from "@/services/githubService";
 
 interface Stack {
 	id: string;
 	imgPath: string;
 }
 
-function page() {
+async function page() {
+	const githubService = new GithubService("ythiago03");
 	const usedAtWorkStaks: Stack[] = [
 		{
 			id: "css",
@@ -124,7 +126,8 @@ function page() {
 		},
 	];
 
-	const stacks: Stack[] = [];
+	const followersList = await githubService.getFollowers();
+
 	return (
 		<main className="mt-30 xl:mt-40">
 			<section className="flex flex-col-reverse xl:flex-row mt-20 gap-3">
@@ -186,28 +189,19 @@ function page() {
 					</div>
 					<div className="text-muted-foreground flex gap-3">
 						<div className="flex translate-x-2">
-							<Avatar className="size-7">
-								<AvatarImage src="https://i.scdn.co/image/ab6761610000e5eb8a1271f7f32e5202924ebff2" />
-								<AvatarFallback>CN</AvatarFallback>
-							</Avatar>
-							<Avatar className="size-7 -translate-x-2">
-								<AvatarImage src="https://i.scdn.co/image/ab6761610000e5eb8a1271f7f32e5202924ebff2" />
-								<AvatarFallback>CN</AvatarFallback>
-							</Avatar>
-							<Avatar className="size-7 -translate-x-4">
-								<AvatarImage src="https://i.scdn.co/image/ab6761610000e5eb8a1271f7f32e5202924ebff2" />
-								<AvatarFallback>CN</AvatarFallback>
-							</Avatar>
-							<Avatar className="size-7 -translate-x-6">
-								<AvatarImage src="https://i.scdn.co/image/ab6761610000e5eb8a1271f7f32e5202924ebff2" />
-								<AvatarFallback>CN</AvatarFallback>
-							</Avatar>
-							<Avatar className="size-7 -translate-x-8">
-								<AvatarImage src="https://i.scdn.co/image/ab6761610000e5eb8a1271f7f32e5202924ebff2" />
-								<AvatarFallback>CN</AvatarFallback>
-							</Avatar>
+							{followersList.followers.map((follower, i) => (
+								<Avatar
+									key={follower.login}
+									className={`-translate-x-${i * 2} size-7`}
+								>
+									<AvatarImage src={follower.avatar_url} />
+									<AvatarFallback>{follower.login}</AvatarFallback>
+								</Avatar>
+							))}
 						</div>
-						<span className="-translate-x-6">+ 112</span>
+						<span className="-translate-x-6">
+							+ {followersList.amountOfFollowers - 5}
+						</span>
 					</div>
 				</div>
 				<div className="w-full h-32 flex flex-col gap-3 p-1 justify-center items-center rounded-lg bg-muted/20 shadow-sm">
@@ -363,7 +357,7 @@ function page() {
 						<p>
 							Nov 2024 -
 							<span className="font-semibold text-blue-400"> Present</span>
-							<span className="text-muted-foreground "> 10 months</span>
+							<span className="text-muted-foreground "> 5 months</span>
 						</p>
 
 						<div className="space-y-1 my-3">
@@ -390,7 +384,7 @@ function page() {
 					<div className="w-full flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
 						<p>
 							Mar 2024 - Oct 2024
-							<span className="text-muted-foreground"> 10 months</span>
+							<span className="text-muted-foreground"> 7 months</span>
 						</p>
 
 						<div className="space-y-1 my-3">
@@ -418,7 +412,7 @@ function page() {
 					<div className="w-full flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
 						<p>
 							Oct 2022 - Jan 2024
-							<span className="text-muted-foreground "> 10 months</span>
+							<span className="text-muted-foreground "> more than 1 year</span>
 						</p>
 
 						<div className="space-y-1 my-3">
@@ -451,10 +445,7 @@ function page() {
 					<div className="w-full flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
 						<p>
 							Jan 2022 -
-							<span className="text-muted-foreground ">
-								{" "}
-								Dec 2025 10 months
-							</span>
+							<span className="text-muted-foreground "> Dec 2025 4 years</span>
 						</p>
 
 						<div className="space-y-1 my-3">
@@ -478,7 +469,7 @@ function page() {
 					</div>
 				</div>
 			</section>
-			<section className="mt-20">
+			<section className="my-20">
 				<h2 className="sticky top-20 w-full h-20 flex items-center gap-3 text-2xl font-semibold rounded-lg bg-background">
 					<Phone /> Contact
 				</h2>
