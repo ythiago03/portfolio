@@ -36,7 +36,7 @@ interface Stack {
 	imgPath: string;
 }
 
-async function page() {
+async function About() {
 	const githubService = new GithubService("ythiago03");
 	const usedAtWorkStaks: Stack[] = [
 		{
@@ -131,7 +131,7 @@ async function page() {
 	const followersList = await githubService.getFollowers();
 
 	return (
-		<main className="mt-30 xl:mt-40">
+		<main className="mt-30 xl:mt-40 mb-20">
 			<section className="flex flex-col-reverse xl:flex-row mt-20 gap-3">
 				<div
 					className="group relative w-full h-96 xl:w-1/4 xl:h-auto  shadow-sm rounded-lg transition-transform duration-300 hover:rotate-x-6 hover:rotate-y-6 hover:scale-105"
@@ -505,4 +505,4 @@ async function page() {
 	);
 }
 
-export default page;
+export default About;
