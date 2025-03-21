@@ -12,16 +12,16 @@ const Projects = () => {
 			<h1 className="flex items-center gap-3 my-10 text-2xl font-semibold">
 				<Construction /> Projects
 			</h1>
-			<section className="grid grid-cols-2 gap-6">
+			<section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 				<div className="flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
 					<Link
 						href={"https://timerify.vercel.app/"}
 						target="_blank"
-						className="rounded-lg overflow-hidden h-76 border shadow-sm"
+						className="rounded-lg overflow-hidden  border shadow-sm"
 					>
 						<img
 							src="/assets/timerify.png"
-							className="w-full"
+							className="w-full  object-cover aspect-video"
 							alt="Timerify project screenshot"
 						/>
 					</Link>
@@ -70,11 +70,11 @@ const Projects = () => {
 					<Link
 						href={"https://devutils-th.vercel.app/"}
 						target="_blank"
-						className="rounded-lg overflow-hidden h-76 border shadow-sm"
+						className="rounded-lg overflow-hidden  border shadow-sm"
 					>
 						<img
 							src="/assets/devutils.png"
-							className="w-full"
+							className="w-full  object-cover aspect-video"
 							alt="DevUtils project screenshot"
 						/>
 					</Link>
@@ -121,11 +121,11 @@ const Projects = () => {
 					<Link
 						href={"https://physiosearch.vercel.app/"}
 						target="_blank"
-						className="rounded-lg overflow-hidden h-76 border shadow-sm"
+						className="rounded-lg overflow-hidden  border shadow-sm"
 					>
 						<img
 							src="/assets/physiosearch.png"
-							className="w-full"
+							className="w-full  object-cover aspect-video"
 							alt="PhysioSearch project screenshot"
 						/>
 					</Link>
@@ -174,11 +174,11 @@ const Projects = () => {
 					<Link
 						href={"https://timerify.vercel.app/"}
 						target="_blank"
-						className="rounded-lg overflow-hidden h-76 border shadow-sm"
+						className="rounded-lg overflow-hidden  border shadow-sm"
 					>
 						<img
 							src="/assets/portfolio.png"
-							className="w-full"
+							className="w-full  object-cover aspect-video"
 							alt="Portfolio project screenshot"
 						/>
 					</Link>
@@ -221,29 +221,22 @@ const Projects = () => {
 						<Badge>Shadcn/ui</Badge>
 					</div>
 				</div>
-				<section className="grid grid-cols-3 col-span-2 gap-6">
+				<section className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 col-span-1 lg:col-span-2 gap-6">
 					<div className="flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
-						<div className="rounded-lg overflow-hidden">
-							<img
-								src="/assets/timerify.png"
-								className="w-full"
-								alt="Timerify project screenshot"
-							/>
-						</div>
 						<div className="flex items-center gap-3">
-							<h2 className="text-xl font-bold">Timerify</h2>
+							<h2 className="text-xl font-bold">MangaStore</h2>
 							<span className="w-full h-1 bg-foreground" />
 							<div className="flex gap-3">
 								<Link
 									className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-									href={"/"}
+									href={"https://manga-store-six.vercel.app/"}
 									target="_blank"
 								>
 									<AppWindow className="size-6" />
 								</Link>
 								<Link
 									className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-									href={"/"}
+									href={"https://github.com/ythiago03/manga-store"}
 									target="_blank"
 								>
 									<Github className="size-6" />
@@ -251,240 +244,16 @@ const Projects = () => {
 							</div>
 						</div>
 						<div className="flex gap-3">
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
+							<img className="size-6" src="/assets/react.png" alt="" />
+							<img className="size-6" src="/assets/typescript.png" alt="" />
+							<img className="size-6" src="/assets/css.png" alt="" />
 						</div>
-						<p className="line-clamp-3">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo vel
-							earum tempora voluptatibus ullam possimus obcaecati excepturi
-							error vitae, laudantium vero odio dolore reiciendis, quaerat qui
-							ratione, quia repudiandae velit!
-						</p>
-					</div>
-					<div className="flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
-						<div className="rounded-lg overflow-hidden">
-							<img
-								src="/assets/timerify.png"
-								className="w-full"
-								alt="Timerify project screenshot"
-							/>
+						<p className="line-clamp-3">A Manga E-Commerce.</p>
+						<div className=" space-x-2 space-y-2">
+							<Badge>React</Badge>
+							<Badge>Typescript</Badge>
+							<Badge>Css</Badge>
 						</div>
-						<div className="flex items-center gap-3">
-							<h2 className="text-xl font-bold">Timerify</h2>
-							<span className="w-full h-1 bg-foreground" />
-							<div className="flex gap-3">
-								<Link
-									className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-									href={"/"}
-									target="_blank"
-								>
-									<AppWindow className="size-6" />
-								</Link>
-								<Link
-									className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-									href={"/"}
-									target="_blank"
-								>
-									<Github className="size-6" />
-								</Link>
-							</div>
-						</div>
-						<div className="flex gap-3">
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-						</div>
-						<p className="line-clamp-3">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo vel
-							earum tempora voluptatibus ullam possimus obcaecati excepturi
-							error vitae, laudantium vero odio dolore reiciendis, quaerat qui
-							ratione, quia repudiandae velit!
-						</p>
-					</div>
-					<div className="flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
-						<div className="rounded-lg overflow-hidden">
-							<img
-								src="/assets/timerify.png"
-								className="w-full"
-								alt="Timerify project screenshot"
-							/>
-						</div>
-						<div className="flex items-center gap-3">
-							<h2 className="text-xl font-bold">Timerify</h2>
-							<span className="w-full h-1 bg-foreground" />
-							<div className="flex gap-3">
-								<Link
-									className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-									href={"/"}
-									target="_blank"
-								>
-									<AppWindow className="size-6" />
-								</Link>
-								<Link
-									className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-									href={"/"}
-									target="_blank"
-								>
-									<Github className="size-6" />
-								</Link>
-							</div>
-						</div>
-						<div className="flex gap-3">
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-						</div>
-						<p className="line-clamp-3">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo vel
-							earum tempora voluptatibus ullam possimus obcaecati excepturi
-							error vitae, laudantium vero odio dolore reiciendis, quaerat qui
-							ratione, quia repudiandae velit!
-						</p>
-					</div>
-					<div className="flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
-						<div className="rounded-lg overflow-hidden">
-							<img
-								src="/assets/timerify.png"
-								className="w-full"
-								alt="Timerify project screenshot"
-							/>
-						</div>
-						<div className="flex items-center gap-3">
-							<h2 className="text-xl font-bold">Timerify</h2>
-							<span className="w-full h-1 bg-foreground" />
-							<div className="flex gap-3">
-								<Link
-									className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-									href={"/"}
-									target="_blank"
-								>
-									<AppWindow className="size-6" />
-								</Link>
-								<Link
-									className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-									href={"/"}
-									target="_blank"
-								>
-									<Github className="size-6" />
-								</Link>
-							</div>
-						</div>
-						<div className="flex gap-3">
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-						</div>
-						<p className="line-clamp-3">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo vel
-							earum tempora voluptatibus ullam possimus obcaecati excepturi
-							error vitae, laudantium vero odio dolore reiciendis, quaerat qui
-							ratione, quia repudiandae velit!
-						</p>
-					</div>
-					<div className="flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
-						<div className="rounded-lg overflow-hidden">
-							<img
-								src="/assets/timerify.png"
-								className="w-full"
-								alt="Timerify project screenshot"
-							/>
-						</div>
-						<div className="flex items-center gap-3">
-							<h2 className="text-xl font-bold">Timerify</h2>
-							<span className="w-full h-1 bg-foreground" />
-							<div className="flex gap-3">
-								<Link
-									className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-									href={"/"}
-									target="_blank"
-								>
-									<AppWindow className="size-6" />
-								</Link>
-								<Link
-									className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-									href={"/"}
-									target="_blank"
-								>
-									<Github className="size-6" />
-								</Link>
-							</div>
-						</div>
-						<div className="flex gap-3">
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-						</div>
-						<p className="line-clamp-3">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo vel
-							earum tempora voluptatibus ullam possimus obcaecati excepturi
-							error vitae, laudantium vero odio dolore reiciendis, quaerat qui
-							ratione, quia repudiandae velit!
-						</p>
-					</div>
-					<div className="flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
-						<div className="rounded-lg overflow-hidden">
-							<img
-								src="/assets/timerify.png"
-								className="w-full"
-								alt="Timerify project screenshot"
-							/>
-						</div>
-						<div className="flex items-center gap-3">
-							<h2 className="text-xl font-bold">Timerify</h2>
-							<span className="w-full h-1 bg-foreground" />
-							<div className="flex gap-3">
-								<Link
-									className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-									href={"/"}
-									target="_blank"
-								>
-									<AppWindow className="size-6" />
-								</Link>
-								<Link
-									className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-									href={"/"}
-									target="_blank"
-								>
-									<Github className="size-6" />
-								</Link>
-							</div>
-						</div>
-						<div className="flex gap-3">
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-							<AppWindow className="size-6" />
-						</div>
-						<p className="line-clamp-3">
-							Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo vel
-							earum tempora voluptatibus ullam possimus obcaecati excepturi
-							error vitae, laudantium vero odio dolore reiciendis, quaerat qui
-							ratione, quia repudiandae velit!
-						</p>
 					</div>
 				</section>
 			</section>
