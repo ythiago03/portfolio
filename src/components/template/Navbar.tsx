@@ -27,7 +27,7 @@ const Navbar = () => {
 	const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
 
 	return (
-		<nav className="fixed top-3 z-20 bg-background border w-10/12 p-3 flex items-center justify-between rounded-lg sm:w-2/3">
+		<nav className="fixed top-3 z-20 bg-background/80 backdrop-blur-sm  w-10/12 p-3 flex items-center justify-between rounded-lg sm:w-2/3">
 			<Link href={"/"}>
 				{theme === "light" ? (
 					<Image
