@@ -187,11 +187,12 @@ async function About() {
 			<section className="grid grid-cols-1 gap-3 mt-20 sm:grid-cols-2 lg:grid-cols-3">
 				<ExibitionCard title="Followers" icon={UserPlus}>
 					<div className="text-muted-foreground flex gap-3">
-						<div className="flex translate-x-2">
+						<div className="flex">
 							{followersList.followers.map((follower, i) => (
 								<Avatar
 									key={follower.login}
-									className={`-translate-x-${i * 2} size-7`}
+									className="size-7 relative"
+									style={{ transform: `translateX(-${i * 8}px)` }}
 								>
 									<AvatarImage src={follower.avatar_url} />
 									<AvatarFallback>{follower.login}</AvatarFallback>
