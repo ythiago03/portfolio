@@ -1,12 +1,16 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import { twMerge } from "tailwind-merge";
 
-const NextjsIcon = () => {
+interface Props extends React.HTMLAttributes<HTMLImageElement> {}
+
+const NextjsIcon = ({ className = "", ...rest }: Props) => {
 	const { theme } = useTheme();
 
 	return (
 		<img
+			{...rest}
 			src={
 				theme === "light"
 					? "/assets/nextjs-dark.png"
@@ -15,7 +19,7 @@ const NextjsIcon = () => {
 			alt="NextJs Logo"
 			width={0}
 			height={0}
-			className="w-12"
+			className={twMerge("w-12", className)}
 		/>
 	);
 };

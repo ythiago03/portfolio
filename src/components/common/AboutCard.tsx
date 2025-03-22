@@ -15,7 +15,7 @@ const AboutCard = ({
 }: AboutCardProps) => {
 	return (
 		<section {...rest} className={twMerge(className, "mt-20")}>
-			<h2 className="sticky top-20 w-full h-20 flex items-center gap-3 text-2xl font-semibold rounded-lg bg-background">
+			<h2 className="sticky top-20 w-full h-20 flex items-center gap-3 text-2xl font-semibold rounded-lg bg-background/80 backdrop-blur-sm">
 				<Icon /> {title}
 			</h2>
 			{children}

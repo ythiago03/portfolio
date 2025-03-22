@@ -10,7 +10,17 @@ import {
 	CommandSeparator,
 	CommandShortcut,
 } from "@/components/ui/command";
-import { Calculator, Calendar, House, Smile, User } from "lucide-react";
+import {
+	Calculator,
+	Calendar,
+	Codepen,
+	Construction,
+	Github,
+	House,
+	Linkedin,
+	Smile,
+	User,
+} from "lucide-react";
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -27,13 +37,18 @@ const Command = () => {
 				setIsOpen((open) => !open);
 			}
 
-			if (e.key === "b" && (e.metaKey || e.ctrlKey)) {
+			if (e.key === "1" && (e.metaKey || e.ctrlKey)) {
 				e.preventDefault();
 				setIsOpen((open) => !open);
 				router.push("/");
 			}
 
-			if (e.key === "p" && (e.metaKey || e.ctrlKey)) {
+			if (e.key === "2" && (e.metaKey || e.ctrlKey)) {
+				e.preventDefault();
+				setIsOpen((open) => !open);
+				router.push("/about");
+			}
+			if (e.key === "3" && (e.metaKey || e.ctrlKey)) {
 				e.preventDefault();
 				setIsOpen((open) => !open);
 				router.push("/about");
@@ -73,7 +88,7 @@ const Command = () => {
 						>
 							<House />
 							<span>Home</span>
-							<CommandShortcut>⌘B</CommandShortcut>
+							<CommandShortcut>⌘1</CommandShortcut>
 						</CommandItem>
 						<CommandItem
 							onSelect={() => {
@@ -83,7 +98,47 @@ const Command = () => {
 						>
 							<User />
 							<span>About</span>
-							<CommandShortcut>⌘P</CommandShortcut>
+							<CommandShortcut>⌘2</CommandShortcut>
+						</CommandItem>
+						<CommandItem
+							onSelect={() => {
+								router.push("/projects");
+								setIsOpen(false);
+							}}
+						>
+							<Construction />
+							<span>Projects</span>
+							<CommandShortcut>⌘3</CommandShortcut>
+						</CommandItem>
+					</CommandGroup>
+					<CommandSeparator />
+					<CommandGroup heading="Social">
+						<CommandItem
+							onSelect={() => {
+								router.push("https://www.linkedin.com/in/ythiago03/");
+								setIsOpen(false);
+							}}
+						>
+							<Linkedin />
+							<span>Linkedin</span>
+						</CommandItem>
+						<CommandItem
+							onSelect={() => {
+								router.push("https://github.com/ythiago03");
+								setIsOpen(false);
+							}}
+						>
+							<Github />
+							<span>Github</span>
+						</CommandItem>
+						<CommandItem
+							onSelect={() => {
+								router.push("https://codepen.io/Ythiago03");
+								setIsOpen(false);
+							}}
+						>
+							<Codepen />
+							<span>Codepen</span>
 						</CommandItem>
 					</CommandGroup>
 				</CommandList>

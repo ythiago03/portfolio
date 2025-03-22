@@ -1,3 +1,4 @@
+import NextjsIcon from "@/components/common/NextjsIcon";
 import ToggleCommand from "@/components/common/ToggleCommand";
 import GithubCard from "@/components/template/GithubCard";
 import HomeCards from "@/components/template/HomeCards";
@@ -82,6 +83,14 @@ export default async function Home() {
 						<span className="font-bold"> solve problems</span> and{" "}
 						<span className="font-bold"> create innovative </span>
 						solutions using technologies such as{" "}
+						<Link
+							href={"https://nextjs.org/"}
+							target="_blank"
+							className="inline-flex items-center p-1 gap-1 border rounded-md hover:bg-blue-400/20"
+						>
+							<NextjsIcon className="size-3" /> NextJs
+						</Link>
+						,{" "}
 						<Link
 							href={"https://react.dev/"}
 							target="_blank"
