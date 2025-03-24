@@ -51,11 +51,11 @@ const Projects = () => {
 						<img className="size-6" src="/assets/tailwind.png" alt="" />
 					</div>
 					<p className="line-clamp-3">
-						Timerify é uma aplicação web de pomodoro projetada para aumentar sua
-						produtividade durante estudos, trabalho ou qualquer outra atividade
-						que exija foco. Com uma interface intuitiva e recursos
-						personalizáveis, o Timerify oferece uma experiência única para
-						gerenciar seu tempo de forma eficiente.
+						Timerify is a web-based Pomodoro application designed to boost your
+						productivity during study sessions, work, or any other
+						focus-intensive activities. With an intuitive interface and
+						customizable features, Timerify provides a unique experience for
+						managing your time efficiently.
 					</p>
 					<div className=" space-x-2 space-y-2">
 						<Badge>NextJs</Badge>
@@ -105,8 +105,11 @@ const Projects = () => {
 						<img className="size-6" src="/assets/firebase.png" alt="" />
 					</div>
 					<p className="line-clamp-3">
-						O DevUtils é um site de utilidades criado para desenvolvedores,
-						focado em fornecer ferramentas que ajudam no desenvolvimento.
+						DevUtils is a utility website created for developers, focused on
+						providing practical tools that simplify test data generation and
+						string manipulation. The main goal is to speed up development by
+						offering a platform to quickly generate valid data and perform
+						various string operations, such as conversion and formatting.
 					</p>
 					<div className="space-x-2 space-y-2">
 						<Badge>React</Badge>
@@ -156,9 +159,9 @@ const Projects = () => {
 						<img className="size-6" src="/assets/firebase.png" alt="" />
 					</div>
 					<p className="line-clamp-3">
-						App para estudantes visualizarem partes de membros inferiores do
-						corpo, podendo clicar sobre os membros destacados e visualizar
-						artigos, videos, textos etc.
+						App designed for a group of physiotherapy students to visualize
+						parts of the lower limbs of the body, click on highlighted areas,
+						and access articles, videos, texts, and more.
 					</p>
 					<div className="space-x-2 space-y-2">
 						<Badge>React</Badge>
@@ -208,10 +211,10 @@ const Projects = () => {
 						<img className="size-6" src="/assets/tailwind.png" alt="" />
 					</div>
 					<p className="line-clamp-3">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita
-						recusandae aliquid accusamus magnam deleniti laborum temporibus hic
-						excepturi. Beatae cumque provident natus architecto eaque
-						asperiores! Quos recusandae vero rerum quia.
+						A digital space where I showcase what I can do! Here, you'll find my
+						projects, the technologies I use, and a bit about my journey as a
+						developer. Built with lots of code, coffee, lofi, and a constant
+						drive to learn more. Feel free to explore! 😃💻
 					</p>
 					<div className=" space-x-2 space-y-2">
 						<Badge>NextJs</Badge>
