@@ -8,7 +8,9 @@ const Blog = () => {
 			<section className="relative z-10 w-full mt-20 flex items-center">
 				<div className="flex flex-col gap-3 grow">
 					<span className="text-2xl font-semibold">Oops!</span>
-					<h1 className="text-6xl font-extrabold">Under construction</h1>
+					<h1 className="text-5xl md:text-6xl font-extrabold">
+						Under construction
+					</h1>
 					<p className="text-xl">This page is under construction</p>
 					<Link
 						href={"/"}
