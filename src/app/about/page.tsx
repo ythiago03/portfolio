@@ -1,3 +1,20 @@
+import Link from "next/link";
+import React from "react";
+
+import GithubService from "@/services/githubService";
+
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+import ExibitionCard from "@/components/common/ExibitionCard";
+import AboutCard from "@/components/common/AboutCard";
+import NextjsIcon from "@/components/common/NextjsIcon";
+
 import {
 	Brain,
 	BriefcaseBusiness,
@@ -16,20 +33,6 @@ import {
 	University,
 	UserPlus,
 } from "lucide-react";
-
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from "@/components/ui/accordion";
-
-import Link from "next/link";
-import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import GithubService from "@/services/githubService";
-import ExibitionCard from "@/components/common/ExibitionCard";
-import AboutCard from "@/components/common/AboutCard";
 
 interface Stack {
 	id: string;
@@ -105,17 +108,7 @@ async function About() {
 			imgPath: "/assets/spring.png",
 		},
 	];
-	const learningStaks: Stack[] = [
-		{
-			id: "azure",
-			imgPath: "/assets/azure.png",
-		},
-
-		{
-			id: "firebase",
-			imgPath: "/assets/firebase.png",
-		},
-	];
+	const learningStaks: Stack[] = [];
 	const otherStaks: Stack[] = [
 		{
 			id: "azure",
@@ -187,11 +180,12 @@ async function About() {
 			<section className="grid grid-cols-1 gap-3 mt-20 sm:grid-cols-2 lg:grid-cols-3">
 				<ExibitionCard title="Followers" icon={UserPlus}>
 					<div className="text-muted-foreground flex gap-3">
-						<div className="flex translate-x-2">
+						<div className="flex">
 							{followersList.followers.map((follower, i) => (
 								<Avatar
 									key={follower.login}
-									className={`-translate-x-${i * 2} size-7`}
+									className="size-7 relative"
+									style={{ transform: `translateX(-${i * 8}px)` }}
 								>
 									<AvatarImage src={follower.avatar_url} />
 									<AvatarFallback>{follower.login}</AvatarFallback>
@@ -252,6 +246,10 @@ async function About() {
 							I use it at work
 						</AccordionTrigger>
 						<AccordionContent className="flex gap-3 flex-wrap justify-center md:justify-start">
+							<div className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm">
+								<NextjsIcon className="w-6" />
+								NextJs
+							</div>
 							{usedAtWorkStaks.map((stack: Stack) => (
 								<div
 									key={stack.id}
@@ -292,6 +290,10 @@ async function About() {
 							I am studying
 						</AccordionTrigger>
 						<AccordionContent className="flex gap-3 flex-wrap justify-center md:justify-start">
+							<div className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm">
+								<NextjsIcon className="w-6" />
+								NextJs
+							</div>
 							{learningStaks.map((stack: Stack) => (
 								<div
 									key={stack.id}

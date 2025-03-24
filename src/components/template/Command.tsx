@@ -64,7 +64,8 @@ const Command = () => {
 				<CommandInput placeholder="Type a command or search..." />
 				<CommandList>
 					<CommandEmpty>No results found.</CommandEmpty>
-					<CommandGroup heading="Suggestions">
+					{/* TODO: Make blog post suggestions */}
+					{/* <CommandGroup heading="Suggestions">
 						<CommandItem>
 							<Calendar />
 							<span>Calendar</span>
@@ -77,7 +78,7 @@ const Command = () => {
 							<Calculator />
 							<span>Calculator</span>
 						</CommandItem>
-					</CommandGroup>
+					</CommandGroup> */}
 					<CommandSeparator />
 					<CommandGroup heading="Pages">
 						<CommandItem
