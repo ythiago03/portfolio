@@ -175,7 +175,7 @@ const Projects = () => {
 				</div>
 				<div className="flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
 					<Link
-						href={"https://timerify.vercel.app/"}
+						href={"https://thiagof.vercel.app/about"}
 						target="_blank"
 						className="rounded-lg overflow-hidden  border shadow-sm"
 					>
@@ -191,7 +191,7 @@ const Projects = () => {
 						<div className="flex gap-3">
 							<Link
 								className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-								href={"https://timerify.vercel.app/"}
+								href={"https://thiagof.vercel.app/about"}
 								target="_blank"
 							>
 								<AppWindow className="size-6" />
