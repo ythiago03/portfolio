@@ -1,0 +1,377 @@
+---
+title: Mysql
+description: This is our first blog posts
+date: 2024-01-10
+published: true
+---
+
+
+O que é um `DATABASE` ?
+
+> Um banco de dados é um sistema organizado para armazenar, gerenciar e recuperar dados eletrônicos de maneira eficiente. Ele consiste em tabelas, onde cada linha representa uma entrada e as colunas representam atributos. Bancos de dados são amplamente usados em diversas áreas para gerenciar grandes volumes de informações, facilitando a organização e recuperação de dados. Sistemas de gerenciamento de banco de dados (SGBD) são usados para facilitar a criação, manutenção e consulta desses bancos de dados.
+> 
+
+---
+
+### Dados Estruturados e Não Estruturados
+
+- **Dados Estruturados:** São dados organizados em uma estrutura predefinida, geralmente em tabelas com linhas e colunas. Cada valor tem um tipo específico e segue um esquema predefinido. Bancos de dados relacionais, onde as informações são organizadas em tabelas, são um exemplo comum de dados estruturados.
+- **Dados Não Estruturados:** São dados que não seguem uma estrutura fixa ou organização prévia. Eles podem incluir texto livre, imagens, vídeos e outros formatos que não se encaixam facilmente em uma tabela. Redes sociais, e-mails, documentos em texto livre e mídias são exemplos de dados não estruturados. A análise desses dados geralmente requer métodos mais avançados, como processamento de linguagem natural para texto ou reconhecimento de padrões para imagens e vídeos.
+
+> Em resumo, dados estruturados seguem uma organização definida, enquanto dados não estruturados carecem dessa organização predefinida e podem assumir diversas formas. Ambos os tipos de dados são importantes, e a capacidade de lidar com ambos é fundamental em muitas aplicações de análise e tomada de decisão.
+> 
+
+<aside>
+💡 **Para facilitar: Bancos de dados ⇒ Tabelas ⇒ Registros ⇒ Campos**
+
+</aside>
+
+---
+
+## Tipos Primitivos
+
+https://miro.com/app/board/uXjVNKZj8v0=/?moveToWidget=3458764571242631776&cot=14
+
+## Comandos
+
+> O que indica o final de um comando em SQL é o “;” sendo sempre necessário coloca-lo.
+> 
+
+### Criar um database
+
+```sql
+CREATE DATABASE nomedodatabase; //Forma simple
+
+CREATE DATABASE nomedodatabase
+DEFAULT CHARACTER SET utf8
+DEFAULT COLLATE utf8_general_ci; //Forma completa
+```
+
+### Criar uma tabela
+
+```sql
+CREATE TABLE nomedatabela (
+	nome varchar(30),
+	idade tinyint(3),
+	sexo char(1),
+	peso float,
+	nacionalidade varchar(20),
+);//Forma simple
+
+CREATE TABLE nomedatabela (
+	id int not null auto_increment,
+	nome varchar(30) not null,
+	sexo enum('M','F'),
+	peso decimal(5,2),
+	altura decimal(3,2),
+	nacionalidade varchar(20) default 'Brasil',
+	primary key(id)
+) DEFAULT CHARSET = utf8;//Forma completa
+```
+
+### Deletar tabela ou database
+
+```sql
+DROP DATABASE nomedodatabase;
+DROP TABLE nomedatabela;
+```
+
+### Inserindo dados na tabela
+
+```sql
+INSERT INTO nomedatabela
+(id, nome, nascimento, sexo, peso, altura, nacionalidade)
+VALUES
+(DEFAULT, 'Thiago', '2003-01-04', 'M', '59.5', '1.70', 'Brasil');//Forma padrão
+//A data precisa ser no formato aaaa/mm/dd
+
+INSERT INTO nomedatabela VALUES
+(DEFAULT, 'Thiago', '2003-01-04', 'M', '59.5', '1.70', 'Brasil');//Forma simplificada
+//(porém os dados precisam estar na mesma sequência da tabela)
+
+INSERT INTO nomedatabela
+(id, nome, nascimento, sexo, peso, altura, nacionalidade)
+VALUES
+(DEFAULT, 'Emanuelle', '2003-03-22', 'F', '62.3,' '1.62', 'Brasil'),
+(DEFAULT, 'Andreza', '2004-04-11', 'F', '55.6', '1.59', 'Brasil'),
+(DEFAULT, 'Thiago', '2003-01-04', 'M', '59.5', '1.70', 'Brasil');//Inserindo mais de uma pessoa de uma vez
+```
+
+### Descrevendo dados
+
+```sql
+DESCRIBE nomedatabela;
+
+DESC nomedatabela;//forma simplificada
+```
+
+### Alterando campos tabela
+
+```sql
+ALTER TABLE nomedatabela
+ADD COLUMN nomedacoluna int;//Adiciona no final da tabela
+
+ALTER TABLE nomedatabela
+ADD nomedacoluna int;//Forma simplificada
+
+ALTER TABLE nomedatabela
+ADD COLUMN nomedacoluna int FIRST;//Adiciona no início da tabela
+
+ALTER TABLE nomedatabela
+ADD COLUMN nomedacoluna int AFTER nomedeoutracoluna;//Adiciona após a coluna passada
+
+ALTER TABLE nomedatabela
+MODIFY COLUMN nomedacoluna varchar(20) not null default '';//O modify reescreve toda a coluna
+//ou seja, se você não passar todas as contraints, ele irá deleta-las
+//modify não muda o nome da coluna
+
+ALTER TABLE nomedatabela
+CHANGE COLUMN nomedacolunaatual nomedanovacoluna varchar(20);//Reescreve toda a coluna
+//ou seja, se você não passar todas as contraints, ele irá deleta-las
+
+ALTER TABLE  nomedatabela
+CHANGE TO  novonome;//Troca o nome da tabela
+```
+
+### Alterando dados da tabela
+
+```sql
+UPDATE nomedatabela
+SET nomedocampo = 'Thiago', nomedocampo2 = '2003-01-04'
+WHERE chaveprimaria = '1'
+LIMIT 1;//Comando para alterar dados da tabela, o update recebe a tabela, o set recebe 
+// os campos e o que vai receber de alteração, o where é a verificação de onde alterar e o
+//limit é uma segurança para alterar somente 1 registro
+
+DELETE FROM nomedatabela
+WHERE chaveprimaria = '1'
+LIMIT 2;//Deleta o(s) registro(s) passado(s) no where
+
+TRUNCATE TABLE nomedatabela;//Deleta TODOS os registros da tabela, mas não deleta a 
+//estrutura da tabela
+```
+
+### Utilizando o select
+
+```sql
+select * from nomedatabela; //Seleciona todos os campos da tabela
+
+select * from nomedatabela order by nome; //Order by ordena pelo parâmetro passado
+//nesse caso, ordena pelo nome em ordem ascendente A-Z, 1-2 
+
+select * from nomedatabela order by nome desc; //Order by ordena pelo parâmetro passado
+//nesse caso, ordena pelo nome em ordem descentente Z-A, 2-1
+
+select * from nomedatabela where id = '13'; //Seleciona tudo que atenda a condição no where
+//Pode receber diversos operadores lógicos, os mais comuns são: =, !=, <, >, <=, >=
+//Porém também existem o and, or e o in.
+
+select * from nomedatabela where ano >= '2016' and carga > '40';
+select * from nomedatabela where ano >= '2016' or carga > '40';
+
+select * from nomedatabela where nome like 'silva';//O like meio que pega algo que se
+//pareça com o parêmetro passado em parênteses
+select * from nomedatabela where nome not like 'silva';//O not lke é o contrário do like
+
+//Existem 2 "coringas" para usar no select com like, o "%" e o "_"
+//O "%" significa que pode ou não ter algo antes ou depois da palavra, seu uso depende da
+//sua localização
+
+select * from nomedatabela where nome like '%silva';//Irá pegar tudo que termine com silva
+select * from nomedatabela where nome like '%silva';//Irá pegar tudo que começe com silva
+select * from nomedatabela where nome like '%silva%';//Irá pegar tudo que tenha silva em
+//qualquer lugar
+
+//O "_" se assemelhar ao "%", porém a diferença é que obrigatoriamente precisa existir um
+//caratere para puxar, o % é opcional a existência desse caractere
+
+select nome, ano from nomedatabela where ano between 2020 and 2024;//Seleciona o que 
+//estiver entre os dois valores passados 
+
+select distinct nacionalidade from nomedatabela;//Seleciona mas mostra valores duplicados
+//somente 1 vez
+
+select count(*) from nomedatabela;//Conta tudo e retorna o valor
+
+select max(totalaulas) from cursos where ano = '2016';//Retorna o maior valor
+select nome, min(totalaulas) from cursos where ano = '2016';//Retorna o menor valor
+
+select sum(totalaulas) from cursos;//Retorna a soma dos valores
+
+select avg(totalaulas) from cursos;//Retorna a média dos valores
+
+select totalaulas from cursos group by totalaulas;//Funciona de forma parecida do
+//distinct porém dessa forma conseguimos contar cada grupo
+
+select totalaulas from cursos group by ano having ano > 2016;//Funciona de forma parecida
+//do where no select, porém só pode ser passado o mesmo parâmetro do group by
+```
+
+## Relacionamentos, entidades e chaves
+
+### Relacionamentos
+
+Um relacionamento de tabelas é uma conexão estabelecida entre duas ou mais tabelas em um banco de dados relacional. Esses relacionamentos permitem que os dados sejam vinculados e consultados de forma eficiente, permitindo uma melhor organização e estruturação dos dados.
+
+Existem diferentes tipos de relacionamentos de tabelas, como o relacionamento 1 para 1 e o relacionamento 1 para muitos. No relacionamento 1 para 1, cada registro em uma tabela está associado a apenas um registro correspondente na outra tabela. Já no relacionamento 1 para muitos, um registro em uma tabela pode estar associado a vários registros correspondentes em outra tabela, mas cada registro na segunda tabela está associado a apenas um registro na primeira tabela.
+
+Esses relacionamentos são estabelecidos usando chaves primárias e chaves estrangeiras. A chave primária é um atributo único em uma tabela que identifica exclusivamente cada registro. A chave estrangeira é um atributo em uma tabela que faz referência à chave primária de outra tabela. Essas chaves são usadas para conectar os dados entre as tabelas, permitindo consultas complexas que combinam informações de várias tabelas.
+
+Os relacionamentos de tabelas são fundamentais para a modelagem de dados em um banco de dados relacional, pois permitem a representação de vínculos entre os dados e a obtenção de informações mais completas e precisas por meio de consultas.
+
+### Entidades
+
+Um conceito fundamental em SQL é o de entidades. Em um contexto de bancos de dados, uma entidade representa uma tabela, que é uma coleção de registros relacionados. Cada registro em uma tabela representa uma entrada individual de dados. As entidades são usadas para organizar e armazenar dados de maneira estruturada e eficiente.
+
+No SQL, as entidades são criadas usando o comando CREATE TABLE, onde são definidos os nomes das colunas e os tipos de dados que cada coluna pode armazenar. As entidades também podem ser modificadas usando o comando ALTER TABLE, que permite adicionar, modificar ou excluir colunas de uma tabela existente.
+
+As entidades são a base para a criação e manipulação de dados em um banco de dados SQL, permitindo a organização, recuperação e análise eficiente dos dados armazenados.
+
+---
+
+### **Atributos SQL**
+
+Em SQL, os atributos são as colunas de uma tabela. Cada atributo corresponde a um tipo de dado específico, como texto, número, data, entre outros. Os atributos definem a estrutura da tabela e determinam quais tipos de valores podem ser armazenados em cada coluna.
+
+Os atributos têm propriedades, como restrições de integridade e valores padrão. As restrições de integridade garantem que os dados inseridos nas colunas estejam dentro de limites específicos, como valores mínimos e máximos. Os valores padrão especificam um valor predefinido que será inserido automaticamente em uma coluna se nenhum valor for fornecido durante a inserção de dados.
+
+Os atributos desempenham um papel fundamental na definição da estrutura e organização dos dados em um banco de dados SQL. Eles fornecem informações sobre os tipos de dados que podem ser armazenados, as restrições aplicadas a esses dados e os relacionamentos entre as tabelas.
+
+---
+
+### Chaves primárias e estrangeiras
+
+Os atributos podem ter chaves primárias e estrangeiras. A chave primária identifica exclusivamente cada registro em uma tabela e garante a integridade dos dados. As chaves estrangeiras estabelecem relacionamentos entre tabelas, permitindo que os dados sejam conectados e consultados de maneira eficiente.
+
+As tabelas podem ter relacionamentos uns com os outros por meio de chaves estrangeiras, que são colunas que fazem referência a uma chave primária em outra tabela. Esses relacionamentos permitem a criação de consultas complexas que combinam dados de várias tabelas. Os relacionamentos entre entidades são fundamentais para modelar e representar a estrutura e os vínculos dos dados em um banco de dados relacional.
+
+---
+
+### Relacionamento 1 pra 1
+
+Um relacionamento 1 para 1 ocorre quando uma entidade está diretamente relacionada a apenas uma outra entidade. Isso significa que cada registro de uma entidade está associado a apenas um registro da outra entidade. Em outras palavras, para cada registro em uma tabela, há um único registro correspondente na tabela relacionada. Esse tipo de relacionamento é útil quando há uma dependência direta entre as entidades e é necessário garantir que cada registro tenha uma correspondência única no relacionamento.
+
+### Relacionamento 1 pra N
+
+Um relacionamento 1 para n, ou um relacionamento um para muitos, ocorre quando uma entidade está diretamente relacionada a várias instâncias de outra entidade. Nesse tipo de relacionamento, um registro em uma tabela pode estar associado a vários registros correspondentes em outra tabela, mas cada registro na segunda tabela está associado a apenas um registro na primeira tabela. Esse tipo de relacionamento é comumente utilizado para representar situações em que um único objeto ou entidade está relacionado a várias instâncias de outra entidade. Por exemplo, um cliente pode ter várias ordens de compra, mas cada ordem de compra está vinculada a apenas um cliente. Esse tipo de relacionamento é fundamental para modelar e representar a estrutura dos dados em bancos de dados relacionais.
+
+### Relacionamento N pra N
+
+Um relacionamento N para N, ou um relacionamento muitos para muitos, ocorre quando uma entidade está diretamente relacionada a várias instâncias de outra entidade e vice-versa. Nesse tipo de relacionamento, vários registros em uma tabela podem estar associados a vários registros correspondentes em outra tabela. Esse tipo de relacionamento é comumente utilizado para representar situações em que várias entidades estão interligadas de forma complexa. Por exemplo, em um sistema de gerenciamento de estudantes e disciplinas, vários estudantes podem se inscrever em várias disciplinas, e cada disciplina pode ter vários estudantes matriculados. Para modelar esse relacionamento, é necessário criar uma tabela intermediária que registre as associações entre as entidades, armazenando os identificadores das entidades relacionadas. Esse tipo de relacionamento é fundamental para representar a estrutura dos dados em bancos de dados relacionais e permite consultas e análises avançadas envolvendo múltiplas entidades interligadas.
+
+---
+
+## Usando chaves estrangeiras e Joins
+
+### Chaves estrangeiras
+
+Para cadastrar uma chave estrangeira em uma tabela, primeiro precisamos identificar a relação como diz acima, `1 pra 1`, `1 pra N` ou então `N pra N` , feito isso seguimos as seguintes regras:
+
+- **1 pra 1**
+No relacionamento `1 pra 1`, colocamos a chave estrangeira na entidade “dominante”, como no exemplo abaixo:
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/4bafa185-55e4-4411-ac06-0ada7accd003/59d83e6c-4b90-4b3a-831e-8b0b5240a32a/Untitled.png)
+
+---
+
+- **1 pra N**
+No relacionamento `1 pra N`, colocamos a chave estrangeira sempre no lado N, como no exemplo:
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/4bafa185-55e4-4411-ac06-0ada7accd003/4c274f5e-ba77-417d-a49c-4f994086cd11/Untitled.png)
+
+---
+
+- **N pra N**
+    
+    O relacionamento `N pra N` é um pouco mais complexo, precisamos criar outra entidade entre as duas que estamos relacionando e liga-las com relacionamentos `1 pra n`, seguindo a regra de `1 pra N` , como no exemplo abaixo:
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/4bafa185-55e4-4411-ac06-0ada7accd003/1537fed5-cf16-4397-9524-780c2733c432/Untitled.png)
+    
+    ---
+    
+
+**Na prática, ligamos tabelas com chaves estrangeiras dessa maneira:**
+
+- Primeiro criamos o campo da chave estrangeira na tabela seguindo as regras acima, lembrando que o campo precisa ser da mesma formatação, porém não precisa ser do mesmo nome.
+    
+    ```sql
+    alter table alunos add column cursopreferido int;
+    ```
+    
+- Logo após, configuramos a nova coluna como chave estrangeira.
+    
+    ```sql
+    alter table alunos add foreing key (cursopreferido) references cursos(idcurso);
+    //Configurando o campo como chave estrangeira do campo idcurso da tabela cursos.
+    ```
+    
+
+Feito isso o campo já estará configurado como uma chave estrangeira!
+
+### Utilizando o Join
+
+O **inner join** e o **outer join** são operações comuns usadas para combinar dados de várias tabelas em consultas SQL.
+
+- **Inner Join**
+    
+    O **inner join** é usado para retornar apenas os registros que têm correspondência em ambas as tabelas envolvidas na junção. Ele combina os registros com base em uma condição de correspondência especificada na cláusula **ON**. A consulta resultante incluirá apenas os registros que satisfazem a condição de junção. Por exemplo, se tivermos uma tabela de "clientes" e uma tabela de "pedidos", um inner join entre elas retornaria apenas os clientes que fizeram pedidos.
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/4bafa185-55e4-4411-ac06-0ada7accd003/ab6b3bbe-8acd-41d4-99a3-1d9f7ba0669b/Untitled.png)
+    
+    Para utiliza-lo fazemos o seguinte comando:
+    
+    ```sql
+    select g.nome, g.cursopreferido, c.nome, c.ano 
+    from gafanhotos as g inner join cursos as c
+    on c.idcurso = g.cursopreferido;
+    //Basicamente retorna os dados que tiverem relação, ou seja, só irá mostrar os
+    //gafanhotos que tiverem um curso preferido.
+    ```
+    
+    <aside>
+    💡 O “as” é utilizado para “apelidar” uma tabela, assim facilitando na hora de escrever.
+    
+    </aside>
+    
+    ---
+    
+- **Outer Join**
+    
+    O **outer join** é usado para retornar todos os registros de uma tabela, mesmo que não haja correspondência na tabela relacionada. Existem três tipos de outer join: **left outer join**, **right outer join** e **full outer join**. O left outer join retorna todos os registros da tabela da esquerda e os registros correspondentes da tabela da direita. O right outer join retorna todos os registros da tabela da direita e os registros correspondentes da tabela da esquerda. O full outer join retorna todos os registros de ambas as tabelas, incluindo os registros que não têm correspondência na tabela relacionada.
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/4bafa185-55e4-4411-ac06-0ada7accd003/cfb266f7-68da-4bca-ac3a-3fdef7fa6b88/Untitled.png)
+    
+    Para utiliza-lo fazemos o seguinte comando:
+    
+    ```sql
+    select g.nome, g.cursopreferido, c.nome, c.ano 
+    from gafanhotos as g left outer join cursos as c
+    on c.idcurso = g.cursopreferido;
+    //Retorna todos os dados da tabela direcionada(left, righ, full) + as relações da
+    //outra tabela.
+    ```
+    
+
+<aside>
+💡 Tanto no inner join como no outer join, as palavras inner e outer são opcionais, porém no outer join, precisa-se referenciar qual outer join é, left, right ou full.
+
+</aside>
+
+A utilização dessas operações de junção permite combinar dados de várias tabelas em consultas SQL, fornecendo informações mais completas e precisas para análise e tomada de decisão.
+
+- **Para relacionamentos `N pra N`**
+Primeiro criamos uma tabela ligando as chaves primárias de ambas as tabelas:
+    
+    ```sql
+    create table colaborador_assiste_curso (
+    	id int not null auto_increment,
+        data date,
+        idcolaborador int,
+        idcurso int,
+        primary key (id),
+        foreign key (idcolaborador) references colaboradores(id),
+        foreign key (idcurso) references cursos(idcurso)
+    ) default charset = utf8;
+    ```
+    
+    Depois, utilizamos um join seguido do outro para ligar os dados de ambas as três tabelas:

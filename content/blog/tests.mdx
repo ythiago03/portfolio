@@ -1,0 +1,292 @@
+---
+title: Tests
+description: This is our tests blog posts
+date: 2024-10-14
+published: true
+---
+
+# O que são testes
+
+Existem 3 tipos de testes
+
+- Testes unitários
+- Testes de integração
+- Testes end-to-end (E2E)
+
+## O que são os testes unitários
+
+Os testes unitários são uma prática de desenvolvimento de software em que pequenas partes de código, chamadas de unidades, são testadas de forma isolada. Essas unidades podem ser funções, métodos ou até mesmo classes. O objetivo dos testes unitários é verificar se cada unidade de código funciona corretamente e de acordo com as especificações, garantindo a qualidade do software. Eles ajudam a identificar erros e falhas precocemente, facilitando a manutenção e evolução do código. Além disso, os testes unitários fornecem uma documentação viva do comportamento esperado das unidades de código, auxiliando no entendimento e colaboração entre os membros da equipe de desenvolvimento.
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/4bafa185-55e4-4411-ac06-0ada7accd003/94db9d0f-7897-4d99-b9b2-2a2e4a403f6b/Untitled.png)
+
+Um teste é basicamente composto da maneira acima e seguindo a ordem de cima para baixo, sendo que:
+
+- Primeiro criamos um `teste block`, que basicamente é a função que receberá os nossos testes, como no exemplo:
+    
+    ```jsx
+    test('name of the test', () => {
+    
+    });
+    // o 'test' e o 'it' são exatamente a mesma coisa, mudando somente os nomes.
+    it('name of the test', () => {
+    
+    });
+    ```
+    
+- Despois de criarmos o `test block` precisamos renderizar o componente a ser testado, fazemos isso utilizando a função `render` do react testing library:
+    
+    ```jsx
+    import App from './App';
+    import {render} from '@testing-library/react'
+    
+    test('name of the test', () => {
+    	render(<App/>)
+    
+    });
+    ```
+    
+- Após isso precisamos buscar os elementos a serem testados, a várias formas de fazer isso, uma delas é utilizando o método `getByText`, porém para utilizarmos ele, precisamos criar uma tela imaginária para conseguirmos capturar o elemento, fazemos isso utilizando o método `screen`do react testing library como no exemplo:
+    
+    ```jsx
+    import App from './App';
+    import {render, screen} from '@testing-library/react'
+    
+    test('name of the test', () => {
+    	render(<App/>)
+    	const inputElement = screen.getByText(/learn react/i);
+    });
+    ```
+    
+- Feito isso, precisamos interagir com o elemento a ser testado, interagir nada mais é do que ações que podem ser feitas pelo software ou pelo usuário, como um click, uma troca de página, um envio de formulário entre outras, porém não são todos os testes que tem interações, por exemplo, um teste que somente olha se um elemento foi renderizado ou não, não ocorre interação, podemos ver um teste sem e com interação no exemplo:
+    
+    ```jsx
+    import App from './App';
+    import {render, screen} from '@testing-library/react'
+    
+    //Sem interação
+    test('name of the test', () => {
+    	render(<App/>)
+    	const inputElement = screen.getByText(/learn react/i);
+    });
+    
+    //Com interação
+    ```
+    
+    <aside>
+    💡 Uma tabela sobre utilização dos métodos de screen:
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/4bafa185-55e4-4411-ac06-0ada7accd003/6f579a43-bb94-44a6-a855-1c6e65a6c0ec/Untitled.png)
+    
+    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/4bafa185-55e4-4411-ac06-0ada7accd003/c543cffc-f4dc-4ddd-b7bc-eba40473a3da/Untitled.png)
+    
+    </aside>
+    
+- Por útilmo porém mais importante, é aqui que nós “realmente testamos“ o que queremos, está etapa é responsável por verificar se a ação que fizemos está ocorrendo da forma que queremos que ocorra,  para isso utilizamos o `expect` funciton para verificar se tal coisa está como o esperado, como no exemplo a seguir:
+    
+    ```jsx
+    import App from './App';
+    import {render, screen} from '@testing-library/react'
+    
+    //Sem interação
+    test('name of the test', () => {
+    	render(<App/>)
+    	const inputElement = screen.getByText(/learn react/i);
+    	expect(inputElement).toBeInTheDocument();
+    });
+    //Aqui estamos testando se o elemento "inputElement" está no documento
+    ```
+    
+
+---
+
+### Mockando  uma dependência
+
+Neste teste, precisaremos testar uma `div` que contém um elemento `p` e uma `tag link` do React-Router-Dom, para isso, precisaremos criar um “Mock”, mais especificamente, criaremos um ambiente em que seja utilizável a tag link, pois para utiliza-la precisamos de um BroserRouter do React-Router-Dom, podemos fazer isso da seguinte maneira:
+
+- Criando o mock:
+
+```jsx
+import { render, screen } from '@testing-library/react';
+import TodoFooter from '../TodoFooter';
+import { BrowserRouter } from 'react-router-dom';
+
+const MockTodoFooter = ({numberOfIncompleteTasks}) => {
+  return (
+    <BrowserRouter>
+      <TodoFooter numberOfIncompleteTasks={numberOfIncompleteTasks} />
+    </BrowserRouter>
+    )
+}
+```
+
+Feito isso, toda vez que utilizarmos o mock, ele irá criar o ambiente propício para o nosso componente a ser testado.
+
+- Testando o componente:
+
+```jsx
+import { render, screen } from '@testing-library/react';
+import TodoFooter from '../TodoFooter';
+import { BrowserRouter } from 'react-router-dom';
+
+const MockTodoFooter = ({numberOfIncompleteTasks}) => {
+  return (
+    <BrowserRouter>
+      <TodoFooter numberOfIncompleteTasks={numberOfIncompleteTasks} />
+    </BrowserRouter>
+    )
+}
+
+it('should be in the document', () => {
+  render(<MockTodoFooter numberOfIncompleteTasks={5}/>);
+  const paragraphElement = screen.getByText(/5 tasks left/i);
+  expect(paragraphElement).toBeInTheDocument();
+});
+
+it('should render "task" when the number of imcomplete task is one', () => {
+  render(<MockTodoFooter numberOfIncompleteTasks={1}/>);
+  const paragraphElement = screen.getByText(/1 task left/i);
+  expect(paragraphElement).toBeInTheDocument();
+});
+```
+
+---
+
+### Utilizando o Describe
+
+O describe tem a função de ajudar na organização dos testes, podem ter describes filhos ou não, seguido dessa forma:
+
+- Sem describes filhos:
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/4bafa185-55e4-4411-ac06-0ada7accd003/4054ea1e-033a-457c-961a-c18b98f83267/Untitled.png)
+
+- Com describes filhos:
+
+![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/4bafa185-55e4-4411-ac06-0ada7accd003/d4d1e45c-baa4-48d6-8a47-ffcdeb88cc68/Untitled.png)
+
+Os testes com describe ficam organizados da seguinte maneira:
+
+- Sem describes filhos:
+
+```jsx
+import { render, screen } from '@testing-library/react';
+import TodoFooter from '../TodoFooter';
+import { BrowserRouter } from 'react-router-dom';
+
+const MockTodoFooter = ({numberOfIncompleteTasks}) => {
+  return (
+    <BrowserRouter>
+      <TodoFooter numberOfIncompleteTasks={numberOfIncompleteTasks} />
+    </BrowserRouter>
+    )
+}
+
+describe('TodoFooter', () => {
+	it('should be in the document', () => {
+	  render(<MockTodoFooter numberOfIncompleteTasks={5}/>);
+	  const paragraphElement = screen.getByText(/5 tasks left/i);
+	  expect(paragraphElement).toBeInTheDocument();
+	});
+	
+	it('should render "task" when the number of imcomplete task is one', () => {
+	  render(<MockTodoFooter numberOfIncompleteTasks={1}/>);
+	  const paragraphElement = screen.getByText(/1 task left/i);
+	  expect(paragraphElement).toBeInTheDocument();
+	});
+});
+```
+
+- Com describes filhos:
+
+```jsx
+import { render, screen } from '@testing-library/react';
+import TodoFooter from '../TodoFooter';
+import { BrowserRouter } from 'react-router-dom';
+
+const MockTodoFooter = ({numberOfIncompleteTasks}) => {
+  return (
+    <BrowserRouter>
+      <TodoFooter numberOfIncompleteTasks={numberOfIncompleteTasks} />
+    </BrowserRouter>
+    )
+}
+
+describe('TodoFooter', () => {
+	
+	describe('Functionality 1',() => {
+		it('should be in the document', () => {
+		  render(<MockTodoFooter numberOfIncompleteTasks={5}/>);
+		  const paragraphElement = screen.getByText(/5 tasks left/i);
+		  expect(paragraphElement).toBeInTheDocument();
+		});
+	});
+	
+	describe('Functionality 2',() => {
+		it('should render "task" when the number of imcomplete task is one', () => {
+		  render(<MockTodoFooter numberOfIncompleteTasks={1}/>);
+		  const paragraphElement = screen.getByText(/1 task left/i);
+		  expect(paragraphElement).toBeInTheDocument();
+		});
+	});
+});
+```
+
+---
+
+---
+
+## O que é o vitest
+
+O Vitest é uma ferramenta de teste de unidade para Node.js que oferece uma abordagem simples e eficiente para escrever e executar testes. Ele permite que os desenvolvedores verifiquem o comportamento esperado das unidades de código, garantindo a qualidade e robustez do software. Com o Vitest, é possível testar funções, métodos e classes de forma isolada, facilitando a identificação de erros e falhas precocemente. Além disso, o Vitest ajuda a documentar o comportamento esperado das unidades de código, promovendo uma melhor colaboração entre os membros da equipe de desenvolvimento.
+
+## Como utilizar o Vitest
+
+Para utilizar o Vitest em seu projeto Node.js, siga os passos abaixo:
+
+1. Instale o Vitest, o react testing library e o jest em seu projeto através do npm ou yarn:
+
+```
+npm install -D vitest @testing-library/react @testing-library/jest-dom jsdom
+
+```
+
+ou
+
+```
+yarn add vitest @testing-library/react @testing-library/jest-dom jsdom
+
+```
+
+1. Importe o Vitest, o react testing library e o jest em seu arquivo de teste:
+
+```jsx
+import '@testing-library/jest-dom';
+import { describe, test } from 'vitest';
+```
+
+1. Escreva os testes para suas unidades de código utilizando a sintaxe do Vitest. Por exemplo, para testar se um `botão` está sendo renderizado, você pode fazer o seguinte:
+
+```jsx
+//All imports here
+
+const buttonTestId = 'idBtnTest';
+
+describe('Button', () => {
+  test('Should be able to render the button', () => {
+		const { getByTestId } = render(<Button>Click me!</Button>);
+		expect(getByTestId(buttonTestId)).toBeInTheDocument();
+	})
+});
+
+```
+
+1. Execute os testes utilizando o comando adequado para seu ambiente de desenvolvimento. Por exemplo, se estiver utilizando o npm, você pode usar o seguinte comando:
+
+```
+npm test 
+//Maybe you need to create the script in the package.json
+
+```
+
+1. Observe os resultados dos testes e verifique se suas unidades de código estão funcionando corretamente.
+
+Utilizando o Vitest, você poderá realizar testes unitários eficientes e garantir a qualidade do seu código Node.js**.**
