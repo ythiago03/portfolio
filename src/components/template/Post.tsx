@@ -18,7 +18,9 @@ const Post = ({ slug, title, description, date }: PostProps) => {
 					<Link href={`${slug}`}>{title}</Link>
 				</h2>
 			</div>
-			<div className="max-w-none text-muted-foreground">{description}</div>
+			<p className="max-w-none text-muted-foreground line-clamp-3">
+				{description}
+			</p>
 			<div className="flex justify-between items-center">
 				<dl>
 					<dt className="sr-only">Published on</dt>
