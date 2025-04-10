@@ -21,7 +21,7 @@ Ele é a base da comunicação na internet e permite que os navegadores solicite
 
 O http se trata de uma comunicação entre o nosso browser/client e o nosso server, por meio de requests(pedidos) e responses(respostas):
 
-![](https://miro.medium.com/max/853/1*MoxFEabKGx6NxlKoZ0lXJQ.png)
+![Exemplo de cliente servidor](/blog/http-protocol/client-server.png)
 
 ## O que é Request e Response
 
@@ -76,8 +76,9 @@ Toda response tem um status code, que podem ser:
 
 Para criar um servidor HTTP nativo com Node.js, você pode usar o módulo `http` embutido. Esse módulo fornece uma API simples para criar e gerenciar servidores HTTP. Você pode definir a porta em que o servidor irá escutar e manipular as solicitações e respostas HTTP.
 
-```jsx
-import { createServer } from 'node:http';//Importando protocolo http do node
+```js
+import { createServer } from 'node:http';
+//Importando protocolo http do node
 
 const server = createServer((request, response) => {
 	console.log('oi');
