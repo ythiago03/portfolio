@@ -1,6 +1,6 @@
 ---
 title: HTTP Protocol
-description: Http protocol resume
+description: O HTTP (Hypertext Transfer Protocol) é um protocolo de comunicação usado para transferir dados entre clientes e servidores na web. Ele define como as mensagens devem ser formatadas e transmitidas, permitindo que navegadores solicitem páginas, imagens, vídeos e outros recursos de sites. É a base da navegação na internet e funciona por meio de requisições e respostas entre o navegador (cliente) e o servidor.
 date: 2024-02-14
 published: true
 ---
@@ -10,65 +10,69 @@ published: true
 
 HTTP é a sigla para *Hypertext Transfer Protocol*, que em português significa Protocolo de Transferência de Hipertexto. Trata-se de um protocolo de comunicação utilizado para a transferência de informações na World Wide Web (WWW) e em outros sistemas de rede.
 
-Ele é a base da comunicação na internet e permite que os navegadores solicitem páginas da web e outros recursos de servidores, bem como enviem informações de volta para esses servidores.
+Ele é a base da comunicação na internet e permite que os navegadores solicitem páginas da web e outros recursos de servidores, bem como enviem informações de volta para esses servidores, ele é importante pois permite ações como:
 
-- Permite troca de informações e dados na internet
-- Uma troca de mensagens
-- HTML, CSS, Scripts, Imagens e Vídeos
-- Uma chamada para cada um desses recursos
+- Troca de informações e dados na internet;
+- Uma troca de mensagens;
+- Requisições de HTML, CSS, Scripts, Imagens e Vídeos;
 
 ### Comunicação
 
-O http se trata de uma comunicação entre o nosso browser/client e o nosso server, por meio de requests(pedidos) e responses(respostas):
+O http se trata de uma comunicação entre o nosso browser/client e o nosso servidor, por meio de requests *(pedidos)* e responses *(respostas)*:
 
 ![Exemplo de cliente servidor](/blog/http-protocol/client-server.png)
 
 ## O que é Request e Response
 
-Request e Response são termos comumente utilizados no desenvolvimento de aplicações web.\
+Request e Response são termos comumente utilizados no desenvolvimento de aplicações web.
 
 No contexto do Node.js, os desenvolvedores podem criar servidores HTTP nativos e manipular tanto as requisições quanto as respostas de forma programática, permitindo o desenvolvimento de APIs RESTful e aplicações web personalizadas.
 
 ### Request
 
-O Request (ou requisição) é o pedido feito por um cliente, como um navegador, para o servidor. Ele contém informações como o método HTTP utilizado (por exemplo, GET, POST, PUT, DELETE), o caminho do recurso solicitado e os cabeçalhos que contêm informações adicionais.
+O Request *(ou requisição)* é o pedido feito por um cliente, como um navegador, para o servidor. Ele contém informações como o método **HTTP** utilizado por exemplo, **GET**, **POST**, **PUT**, **DELETE**, o caminho do recurso solicitado e os cabeçalhos que contêm informações adicionais.
 
-Todo request tem um cabeçário e um corpo(headers and body).
+Todo request tem um cabeçário e um corpo *(headers and body)*.
 
-O request tem basicamente 4 methods básicos:
+O request tem 4 métodos principais, sendo eles:
 
-- GET ⇒ pegar um recurso
-- POST ⇒ criar um recurso
-- PUT ⇒ alterar/atualizar um dado
-- DELETE ⇒ deletar um dado
+- **GET ⇒** pegar um recurso;
+- **POST ⇒** criar um recurso;
+- **PUT ⇒** alterar/atualizar um dado;
+- **DELETE ⇒** deletar um dado;
+
+Veja todos os métodos disponíveis [aqui](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods).
 
 ### Response
 
-O Response (ou resposta) é a resposta do servidor ao pedido feito pelo cliente. Ele contém informações como o código de status HTTP (por exemplo, 200 para uma resposta bem-sucedida, 404 para recurso não encontrado), cabeçalhos de resposta (como tipo de conteúdo, codificação) e o corpo da resposta, que contém os dados retornados pelo servidor.
+O Response *(ou resposta)* é a resposta do servidor ao pedido feito pelo cliente. Ela contém informações como o código de status **HTTP** *(por exemplo, 200 para uma resposta bem-sucedida, 404 para recurso não encontrado)*, cabeçalhos de resposta *(como tipo de conteúdo, codificação)* e o corpo da resposta, que contém os dados retornados pelo servidor.
 
 Toda response tem um status code, que podem ser:
 
 - **100**
-    - 100: Continue
-- 2**00**
-    - 200: OK (GET, POST)
-    - 201: Created (PUT)
-    - 204: No Content (DELETE, PUT)
-- 300
-    - 301: Moved Permanently
-    - 308: Permanent Redirect
-    - 302: Found
-    - 307: Temporary Redirect
+    - **100:** Continue;
+- **200**
+    - **200:** OK (GET, POST);
+    - **201:** Created (PUT);
+    - **204:** No Content (DELETE, PUT);
+- **300**
+    - **301:** Moved Permanently;
+    - **308:** Permanent Redirect;
+    - **302:** Found;
+    - **307:** Temporary Redirect;
 - **400**
-    - 400: Bad Request
-    - 401: Unauthorized
-    - 403: Forbidden
-    - 404: Not Found
-    - 405: Method Not Allowed
-    - 429: Too Many Requests
+    - **400:** Bad Request;
+    - **401:** Unauthorized;
+    - **403:** Forbidden;
+    - **404:** Not Found;
+    - **405:** Method Not Allowed;
+    - **429:** Too Many Requests;
 - **500**
-    - 500: Internal Server Error
-    - 503: Service Unavailable
+    - **500:** Internal Server Error;
+    - **503:** Service Unavailable;
+
+Veja todos os status disponíveis [aqui](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status).
+
 
 ---
 
@@ -76,28 +80,23 @@ Toda response tem um status code, que podem ser:
 
 Para criar um servidor HTTP nativo com Node.js, você pode usar o módulo `http` embutido. Esse módulo fornece uma API simples para criar e gerenciar servidores HTTP. Você pode definir a porta em que o servidor irá escutar e manipular as solicitações e respostas HTTP.
 
-```js
-import { createServer } from 'node:http';
+```js showLineNumbers
 //Importando protocolo http do node
+import { createServer } from 'node:http';
 
 const server = createServer((request, response) => {
-	console.log('oi');
-
+	console.log('Server listening on port 3333');
 	return response.write('olá');
 });//Função para criar o servidor
 
 server.listen(3333);//localhost:3333
-//Server.listen 'escuta' a porta passada como parâmetro, 
-//hospedando nosso servidor na porta em questão
+//Server.listen 'escuta' a porta passada como parâmetro, hospedando nosso servidor na porta em questão
 ```
 
 Com o código acima já é possível rodar o servidor utilizando o comando no terminal `node nomedoarquivo.js`, porém haverá um erro pois o `import` é algo recente do JavaScript, para corrigir esse erro é preciso criar um `package.json`  utilizando o  `npm init -y`  e incluir o `type: ‘module’` dentro do package.
 
 O node por padrão precisar ser fechado e executado novamente cada vez  que fizermos uma alteração no nosso servidor, mas uma das maneiras de contornarmos isso é utilizar a flag `—watch` na execução do arquivo, exemplo `node —watch nomedoarquivo.js`.
 
-<aside>
-💡 Dica: Para não ficar digitando o script toda vez que for executar o arquivo, você pode salvar o script na parte de scripts no package.json e rodar somente um `npm run nomedoscript`
-
-</aside>
+>💡 Dica: Para não ficar digitando o script toda vez que for executar o arquivo, você pode salvar o script na parte de scripts no package.json e rodar somente um `npm run nomedoscript`
 
 ---
