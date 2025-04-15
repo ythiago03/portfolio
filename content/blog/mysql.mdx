@@ -1,63 +1,58 @@
 ---
-title: Mysql
-description: This is our first blog posts
+title: Banco de Dados
+description: Um banco de dados SQL (Structured Query Language) é um sistema que armazena, organiza e gerencia dados em formato estruturado, usando tabelas com linhas e colunas. Ele permite que os dados sejam consultados, inseridos, atualizados e deletados por meio da linguagem SQL. É amplamente usado em aplicações web, sistemas corporativos e softwares em geral por sua confiabilidade e capacidade de lidar com grandes volumes de informação de forma eficiente.
 date: 2024-01-10
 published: true
 ---
 
 
-O que é um `DATABASE` ?
+## O que é um **Database** ?
 
-> Um banco de dados é um sistema organizado para armazenar, gerenciar e recuperar dados eletrônicos de maneira eficiente. Ele consiste em tabelas, onde cada linha representa uma entrada e as colunas representam atributos. Bancos de dados são amplamente usados em diversas áreas para gerenciar grandes volumes de informações, facilitando a organização e recuperação de dados. Sistemas de gerenciamento de banco de dados (SGBD) são usados para facilitar a criação, manutenção e consulta desses bancos de dados.
-> 
-
----
+Um banco de dados é um sistema organizado para armazenar, gerenciar e recuperar dados eletrônicos de maneira eficiente. Ele consiste em tabelas, onde cada linha representa uma entrada e as colunas representam atributos. Bancos de dados são amplamente usados em diversas áreas para gerenciar grandes volumes de informações, facilitando a organização e recuperação de dados. Sistemas de gerenciamento de banco de dados (SGBD) são usados para facilitar a criação, manutenção e consulta desses bancos de dados.
 
 ### Dados Estruturados e Não Estruturados
 
 - **Dados Estruturados:** São dados organizados em uma estrutura predefinida, geralmente em tabelas com linhas e colunas. Cada valor tem um tipo específico e segue um esquema predefinido. Bancos de dados relacionais, onde as informações são organizadas em tabelas, são um exemplo comum de dados estruturados.
 - **Dados Não Estruturados:** São dados que não seguem uma estrutura fixa ou organização prévia. Eles podem incluir texto livre, imagens, vídeos e outros formatos que não se encaixam facilmente em uma tabela. Redes sociais, e-mails, documentos em texto livre e mídias são exemplos de dados não estruturados. A análise desses dados geralmente requer métodos mais avançados, como processamento de linguagem natural para texto ou reconhecimento de padrões para imagens e vídeos.
 
-> Em resumo, dados estruturados seguem uma organização definida, enquanto dados não estruturados carecem dessa organização predefinida e podem assumir diversas formas. Ambos os tipos de dados são importantes, e a capacidade de lidar com ambos é fundamental em muitas aplicações de análise e tomada de decisão.
-> 
-
-<aside>
-💡 **Para facilitar: Bancos de dados ⇒ Tabelas ⇒ Registros ⇒ Campos**
-
-</aside>
+Em resumo, dados estruturados seguem uma organização definida, enquanto dados não estruturados carecem dessa organização predefinida e podem assumir diversas formas. Ambos os tipos de dados são importantes, e a capacidade de lidar com ambos é fundamental em muitas aplicações de análise e tomada de decisão.
 
 ---
 
-## Tipos Primitivos
+## Tipos de Dados Primitivos
 
-https://miro.com/app/board/uXjVNKZj8v0=/?moveToWidget=3458764571242631776&cot=14
+<iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVNKZj8v0=/?moveToViewport=-474,-529,1357,1072&embedId=849347243291" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
 
-## Comandos
+## Comandos Mysql
 
-> O que indica o final de um comando em SQL é o “;” sendo sempre necessário coloca-lo.
-> 
+Em um SGBD nós utilizamos de comandos para manipular dados, como inserções, edições ou visualizações, a seguir você irá aprender alguns dos comandos para manipular um banco de dados com o [MySql Workbench](https://www.mysql.com/products/workbench/).
 
 ### Criar um database
 
 ```sql
-CREATE DATABASE nomedodatabase; //Forma simple
-
-CREATE DATABASE nomedodatabase
+-- Forma completa
+CREATE DATABASE IF NOT EXISTS nomedodatabase
 DEFAULT CHARACTER SET utf8
-DEFAULT COLLATE utf8_general_ci; //Forma completa
+DEFAULT COLLATE utf8_general_ci; 
+
+-- Forma simplificada
+CREATE DATABASE nomedodatabase; 
+
 ```
 
 ### Criar uma tabela
 
 ```sql
+-- Forma simplificada
 CREATE TABLE nomedatabela (
 	nome varchar(30),
 	idade tinyint(3),
 	sexo char(1),
 	peso float,
 	nacionalidade varchar(20),
-);//Forma simple
+);
 
+-- Forma mais completa
 CREATE TABLE nomedatabela (
 	id int not null auto_increment,
 	nome varchar(30) not null,
@@ -66,35 +61,40 @@ CREATE TABLE nomedatabela (
 	altura decimal(3,2),
 	nacionalidade varchar(20) default 'Brasil',
 	primary key(id)
-) DEFAULT CHARSET = utf8;//Forma completa
+) DEFAULT CHARSET = utf8; 
 ```
 
 ### Deletar tabela ou database
 
 ```sql
-DROP DATABASE nomedodatabase;
-DROP TABLE nomedatabela;
+-- Deleta o banco de dados
+DROP DATABASE nomedodatabase; 
+
+-- Deleta a tabela
+DROP TABLE nomedatabela; 
 ```
 
-### Inserindo dados na tabela
+### Inserindo dados em uma tabela
 
 ```sql
+-- Formato padrão
 INSERT INTO nomedatabela
 (id, nome, nascimento, sexo, peso, altura, nacionalidade)
 VALUES
-(DEFAULT, 'Thiago', '2003-01-04', 'M', '59.5', '1.70', 'Brasil');//Forma padrão
-//A data precisa ser no formato aaaa/mm/dd
+(DEFAULT, 'Thiago', '2003-01-04', 'M', '59.5', '1.70', 'Brasil'); 
+-- A data precisa ser no formato YYYY-MM-DD
 
+-- Forma simplificada porém os dados precisam estar na mesma sequência da tabela
 INSERT INTO nomedatabela VALUES
-(DEFAULT, 'Thiago', '2003-01-04', 'M', '59.5', '1.70', 'Brasil');//Forma simplificada
-//(porém os dados precisam estar na mesma sequência da tabela)
+(DEFAULT, 'Thiago', '2003-01-04', 'M', '59.5', '1.70', 'Brasil');
 
+-- Inserindo mais de um dado por vez
 INSERT INTO nomedatabela
 (id, nome, nascimento, sexo, peso, altura, nacionalidade)
 VALUES
 (DEFAULT, 'Emanuelle', '2003-03-22', 'F', '62.3,' '1.62', 'Brasil'),
 (DEFAULT, 'Andreza', '2004-04-11', 'F', '55.6', '1.59', 'Brasil'),
-(DEFAULT, 'Thiago', '2003-01-04', 'M', '59.5', '1.70', 'Brasil');//Inserindo mais de uma pessoa de uma vez
+(DEFAULT, 'Thiago', '2003-01-04', 'M', '59.5', '1.70', 'Brasil');
 ```
 
 ### Descrevendo dados
@@ -102,35 +102,43 @@ VALUES
 ```sql
 DESCRIBE nomedatabela;
 
-DESC nomedatabela;//forma simplificada
+-- Formato simplificado
+DESC nomedatabela; 
 ```
 
 ### Alterando campos tabela
 
 ```sql
+-- Adiciona a coluna no final da tabela
 ALTER TABLE nomedatabela
-ADD COLUMN nomedacoluna int;//Adiciona no final da tabela
+ADD COLUMN nomedacoluna int; 
 
+-- Formato simplificado
 ALTER TABLE nomedatabela
-ADD nomedacoluna int;//Forma simplificada
+ADD nomedacoluna int; 
 
+-- Adiciona a coluna no início da tabela
 ALTER TABLE nomedatabela
-ADD COLUMN nomedacoluna int FIRST;//Adiciona no início da tabela
+ADD COLUMN nomedacoluna int FIRST; 
 
+-- Adiciona a coluna após a coluna informada
 ALTER TABLE nomedatabela
-ADD COLUMN nomedacoluna int AFTER nomedeoutracoluna;//Adiciona após a coluna passada
+ADD COLUMN nomedacoluna int AFTER nomedeoutracoluna;
 
+/* O modify reescreve toda a coluna ou seja, se você não passar todas as contraints, 
+ele irá deleta-las. (modify não muda o nome da coluna)
+*/ 
 ALTER TABLE nomedatabela
-MODIFY COLUMN nomedacoluna varchar(20) not null default '';//O modify reescreve toda a coluna
-//ou seja, se você não passar todas as contraints, ele irá deleta-las
-//modify não muda o nome da coluna
+MODIFY COLUMN nomedacoluna varchar(20) not null default '';
 
+-- Reescreve toda a coluna assim como o modify porém da a permissão de alterar o nome
 ALTER TABLE nomedatabela
-CHANGE COLUMN nomedacolunaatual nomedanovacoluna varchar(20);//Reescreve toda a coluna
-//ou seja, se você não passar todas as contraints, ele irá deleta-las
+CHANGE COLUMN nomedacolunaatual nomedanovacoluna varchar(20);
+-- Esse comando é específico do MySQL. Em bancos como PostgreSQL ou SQL Server, o comando seria diferente.
 
-ALTER TABLE  nomedatabela
-CHANGE TO  novonome;//Troca o nome da tabela
+-- Altera o nome da tabela
+ALTER TABLE nomedatabela
+CHANGE TO novonome;
 ```
 
 ### Alterando dados da tabela
@@ -139,72 +147,72 @@ CHANGE TO  novonome;//Troca o nome da tabela
 UPDATE nomedatabela
 SET nomedocampo = 'Thiago', nomedocampo2 = '2003-01-04'
 WHERE chaveprimaria = '1'
-LIMIT 1;//Comando para alterar dados da tabela, o update recebe a tabela, o set recebe 
-// os campos e o que vai receber de alteração, o where é a verificação de onde alterar e o
-//limit é uma segurança para alterar somente 1 registro
+LIMIT 1;--Comando para alterar dados da tabela, o update recebe a tabela, o set recebe 
+-- os campos e o que vai receber de alteração, o where é a verificação de onde alterar e o
+--limit é uma segurança para alterar somente 1 registro
 
 DELETE FROM nomedatabela
 WHERE chaveprimaria = '1'
-LIMIT 2;//Deleta o(s) registro(s) passado(s) no where
+LIMIT 2;--Deleta o(s) registro(s) passado(s) no where
 
-TRUNCATE TABLE nomedatabela;//Deleta TODOS os registros da tabela, mas não deleta a 
-//estrutura da tabela
+TRUNCATE TABLE nomedatabela;--Deleta TODOS os registros da tabela, mas não deleta a 
+--estrutura da tabela
 ```
 
 ### Utilizando o select
 
 ```sql
-select * from nomedatabela; //Seleciona todos os campos da tabela
+select * from nomedatabela; --Seleciona todos os campos da tabela
 
-select * from nomedatabela order by nome; //Order by ordena pelo parâmetro passado
-//nesse caso, ordena pelo nome em ordem ascendente A-Z, 1-2 
+select * from nomedatabela order by nome; --Order by ordena pelo parâmetro passado
+--nesse caso, ordena pelo nome em ordem ascendente A-Z, 1-2 
 
-select * from nomedatabela order by nome desc; //Order by ordena pelo parâmetro passado
-//nesse caso, ordena pelo nome em ordem descentente Z-A, 2-1
+select * from nomedatabela order by nome desc; --Order by ordena pelo parâmetro passado
+--nesse caso, ordena pelo nome em ordem descentente Z-A, 2-1
 
-select * from nomedatabela where id = '13'; //Seleciona tudo que atenda a condição no where
-//Pode receber diversos operadores lógicos, os mais comuns são: =, !=, <, >, <=, >=
-//Porém também existem o and, or e o in.
+select * from nomedatabela where id = '13'; --Seleciona tudo que atenda a condição no where
+--Pode receber diversos operadores lógicos, os mais comuns são: =, !=, <, >, <=, >=
+--Porém também existem o and, or e o in.
 
 select * from nomedatabela where ano >= '2016' and carga > '40';
 select * from nomedatabela where ano >= '2016' or carga > '40';
 
-select * from nomedatabela where nome like 'silva';//O like meio que pega algo que se
-//pareça com o parêmetro passado em parênteses
-select * from nomedatabela where nome not like 'silva';//O not lke é o contrário do like
+select * from nomedatabela where nome like 'silva';--O like meio que pega algo que se
+--pareça com o parêmetro passado em parênteses
+select * from nomedatabela where nome not like 'silva';--O not lke é o contrário do like
 
-//Existem 2 "coringas" para usar no select com like, o "%" e o "_"
-//O "%" significa que pode ou não ter algo antes ou depois da palavra, seu uso depende da
-//sua localização
+--Existem 2 "coringas" para usar no select com like, o "%" e o "_"
+--O "%" significa que pode ou não ter algo antes ou depois da palavra, seu uso depende da
+--sua localização
 
-select * from nomedatabela where nome like '%silva';//Irá pegar tudo que termine com silva
-select * from nomedatabela where nome like '%silva';//Irá pegar tudo que começe com silva
-select * from nomedatabela where nome like '%silva%';//Irá pegar tudo que tenha silva em
-//qualquer lugar
+select * from nomedatabela where nome like '%silva';--Irá pegar tudo que termine com silva
+select * from nomedatabela where nome like '%silva';--Irá pegar tudo que começe com silva
+select * from nomedatabela where nome like '%silva%';--Irá pegar tudo que tenha silva em
+--qualquer lugar
 
-//O "_" se assemelhar ao "%", porém a diferença é que obrigatoriamente precisa existir um
-//caratere para puxar, o % é opcional a existência desse caractere
+--O "_" se assemelhar ao "%", porém a diferença é que obrigatoriamente precisa existir um
+--caratere para puxar, o % é opcional a existência desse caractere
 
-select nome, ano from nomedatabela where ano between 2020 and 2024;//Seleciona o que 
-//estiver entre os dois valores passados 
+select nome, ano from nomedatabela where ano between 2020 and 2024;--Seleciona o que 
+--estiver entre os dois valores passados 
 
-select distinct nacionalidade from nomedatabela;//Seleciona mas mostra valores duplicados
-//somente 1 vez
+select distinct nacionalidade from nomedatabela;--Seleciona mas mostra valores duplicados
+--somente 1 vez
 
-select count(*) from nomedatabela;//Conta tudo e retorna o valor
+select count(*) from nomedatabela;--Conta tudo e retorna o valor
 
-select max(totalaulas) from cursos where ano = '2016';//Retorna o maior valor
-select nome, min(totalaulas) from cursos where ano = '2016';//Retorna o menor valor
+select max(totalaulas) from cursos where ano = '2016';--Retorna o maior valor
+select nome, min(totalaulas) from cursos where ano = '2016';--Retorna o menor valor
 
-select sum(totalaulas) from cursos;//Retorna a soma dos valores
+select sum(totalaulas) from cursos;--Retorna a soma dos valores
 
-select avg(totalaulas) from cursos;//Retorna a média dos valores
+select avg(totalaulas) from cursos;--Retorna a média dos valores
 
-select totalaulas from cursos group by totalaulas;//Funciona de forma parecida do
-//distinct porém dessa forma conseguimos contar cada grupo
+select totalaulas from cursos group by totalaulas;--Funciona de forma parecida do
+--distinct porém dessa forma conseguimos contar cada grupo
 
-select totalaulas from cursos group by ano having ano > 2016;//Funciona de forma parecida
-//do where no select, porém só pode ser passado o mesmo parâmetro do group by
+select totalaulas from cursos group by ano having ano > 2016;--Funciona de forma parecida
+--do where no select, porém só pode ser passado o mesmo parâmetro do group by
 ```
 
 ## Relacionamentos, entidades e chaves
