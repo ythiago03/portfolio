@@ -21,3 +21,15 @@ export function sortPosts(posts: any[]) {
 		return 0;
 	});
 }
+
+export function getMostRecentPost(posts: any[]) {
+	return posts.reduce((latest, current) => {
+		return new Date(current.date) > new Date(latest.date) ? current : latest;
+	});
+}
+
+export function sortPostsByDateDesc(posts: any[]) {
+	return posts
+		.slice()
+		.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
