@@ -4,8 +4,11 @@ import Link from "next/link";
 import CardHome from "../common/CardHome";
 import NextjsIcon from "../common/NextjsIcon";
 
-import { Codepen, Construction, Github, Linkedin } from "lucide-react";
+import { Codepen, Github, Linkedin } from "lucide-react";
 import GithubService from "@/services/githubService";
+import { buttonVariants } from "../ui/button";
+import { cn, getMostRecentPost, sortPosts } from "@/lib/utils";
+import { posts } from "#site/content";
 
 interface Stack {
 	id: string;
@@ -86,6 +89,8 @@ const HomeCards = async () => {
 	];
 	const githubService = new GithubService("ythiago03");
 	const userInfo = await githubService.getProfileInfo();
+	const sortedPosts = sortPosts(posts.filter((post) => post.published));
+	const latestPost = getMostRecentPost(sortedPosts);
 
 	return (
 		<section className="mt-16 grid grid-cols-5 gap-3">
@@ -198,16 +203,23 @@ const HomeCards = async () => {
 				</div>
 			</CardHome>
 			<CardHome className="col-span-5 lg:col-span-2 xl:col-span-2">
-				<Link
-					href={"/blog"}
-					className="w-full h-full flex flex-col items-center justify-center"
-				>
-					<span className="text-2xl font-semibold">Blog</span>
-					<span className="inline-flex items-center font-semibold text-muted-foreground">
-						(<Construction className="text-yellow-400 size-4 mr-1" /> Under
-						construction)
+				<div className="w-full h-full flex flex-col p-3">
+					<span className="font-semibold text-muted-foreground">
+						Latest Post
 					</span>
-				</Link>
+					<div className="mt-3">
+						<h4 className="text-xl font-semibold">{latestPost.title}</h4>
+						<p className="text-muted-foreground line-clamp-3">
+							{latestPost.description}
+						</p>
+						<Link
+							href={`${latestPost.slug}`}
+							className={cn(buttonVariants({ variant: "link" }), "p-0")}
+						>
+							Read More
+						</Link>
+					</div>
+				</div>
 			</CardHome>
 		</section>
 	);

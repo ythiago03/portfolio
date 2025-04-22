@@ -8,7 +8,7 @@
 
 Here is a digital space where I showcase what I can do! Here, you'll find my projects, the technologies I use, and a bit about my journey as a developer. Built with lots of code, coffee, lofi, and a constant drive to learn more. Feel free to explore! 😃💻
 
-[Deployment](https://thiagof.vercel.app/)
+[Deployment](https://thiagof.com)
 
 ## 🛠️ Technologies Used
 

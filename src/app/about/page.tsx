@@ -453,10 +453,10 @@ async function About() {
 					>
 						<Link
 							target="_blank"
-							href={"mailto:ythiagohcfidencio@gmail.com"}
+							href={"mailto:contato@thiagof.com"}
 							className="underline hover:text-blue-400"
 						>
-							ythiagohcfidencio@gmail.com
+							contato@thiagof.com
 						</Link>
 					</ExibitionCard>
 					<ExibitionCard

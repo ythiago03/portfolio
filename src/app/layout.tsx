@@ -21,7 +21,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" className="scroll-pt-[7.5rem]">
 			<body
 				className={`${openSans.className} !p-0  w-10/12 !mx-auto antialiased  sm:w-2/3`}
 			>

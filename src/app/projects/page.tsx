@@ -15,7 +15,7 @@ const Projects = () => {
 			<section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 				<div className="flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
 					<Link
-						href={"https://timerify.vercel.app/"}
+						href={"https://timerify.thiagof.com"}
 						target="_blank"
 						className="rounded-lg overflow-hidden  border shadow-sm"
 					>
@@ -31,7 +31,7 @@ const Projects = () => {
 						<div className="flex gap-3">
 							<Link
 								className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-								href={"https://timerify.vercel.app/"}
+								href={"https://timerify.thiagof.com"}
 								target="_blank"
 							>
 								<AppWindow className="size-6" />
@@ -68,7 +68,7 @@ const Projects = () => {
 				</div>
 				<div className="flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
 					<Link
-						href={"https://devutils-th.vercel.app/"}
+						href={"https://devutils.thiagof.com"}
 						target="_blank"
 						className="rounded-lg overflow-hidden  border shadow-sm"
 					>
@@ -84,7 +84,7 @@ const Projects = () => {
 						<div className="flex gap-3">
 							<Link
 								className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-								href={"https://devutils-th.vercel.app/"}
+								href={"https://devutils.thiagof.com"}
 								target="_blank"
 							>
 								<AppWindow className="size-6" />
@@ -122,7 +122,7 @@ const Projects = () => {
 				</div>
 				<div className="flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
 					<Link
-						href={"https://physiosearch.vercel.app/"}
+						href={"https://physiosearch.thiagof.com"}
 						target="_blank"
 						className="rounded-lg overflow-hidden  border shadow-sm"
 					>
@@ -138,7 +138,7 @@ const Projects = () => {
 						<div className="flex gap-3">
 							<Link
 								className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-								href={"https://physiosearch.vercel.app/"}
+								href={"https://physiosearch.thiagof.com"}
 								target="_blank"
 							>
 								<AppWindow className="size-6" />
@@ -175,7 +175,7 @@ const Projects = () => {
 				</div>
 				<div className="flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
 					<Link
-						href={"https://thiagof.vercel.app/about"}
+						href={"https://thiagof.com"}
 						target="_blank"
 						className="rounded-lg overflow-hidden  border shadow-sm"
 					>
@@ -191,7 +191,7 @@ const Projects = () => {
 						<div className="flex gap-3">
 							<Link
 								className="size-10 flex items-center justify-center  p-1 rounded-sm hover:bg-zinc-500/20"
-								href={"https://thiagof.vercel.app/about"}
+								href={"https://thiagof.com"}
 								target="_blank"
 							>
 								<AppWindow className="size-6" />
