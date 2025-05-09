@@ -33,7 +33,8 @@ import {
 	University,
 	UserPlus,
 } from "lucide-react";
-import { getMonthsPassed } from "@/lib/utils";
+import { cn, getMonthsPassed } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
 interface Stack {
 	id: string;
@@ -171,7 +172,10 @@ async function About() {
 						<Link
 							href={"/assets/ThiagoFidencioCV.pdf"}
 							download={"Thiago-Fidencio-CV.pdf"}
-							className="flex w-fit px-3 py-2 gap-2 rounded-md mt-auto hover:-rotate-6 hover:bg-primary/90 bg-foreground text-background text-sm"
+							className={cn(
+								buttonVariants({ variant: "default" }),
+								"mt-3 hover:-rotate-6 w-fit",
+							)}
 						>
 							<FileDown className="size-4" /> Download Cv
 						</Link>
