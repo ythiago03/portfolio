@@ -1,5 +1,7 @@
 import NextjsIcon from "@/components/common/NextjsIcon";
 import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { AppWindow, Construction, Github } from "lucide-react";
 import Link from "next/link";
 interface Stack {
@@ -259,6 +261,13 @@ const Projects = () => {
 						</div>
 					</div>
 				</section>
+				<Link
+					href={"https://github.com/ythiago03?tab=repositories"}
+					target="_blank"
+					className={cn(buttonVariants({ variant: "link" }), "mt-3 w-fit")}
+				>
+					See all projects
+				</Link>
 			</section>
 		</main>
 	);

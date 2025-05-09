@@ -3,7 +3,9 @@ import ToggleCommand from "@/components/common/ToggleCommand";
 import GithubCard from "@/components/template/GithubCard";
 import HomeCards from "@/components/template/HomeCards";
 import Typewriter from "@/components/template/Typewriter";
+import { buttonVariants } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { cn } from "@/lib/utils";
 import GithubService from "@/services/githubService";
 import { FileDown } from "lucide-react";
 import Image from "next/image";
@@ -154,7 +156,10 @@ export default async function Home() {
 					<Link
 						href={"/assets/ThiagoFidencioCV.pdf"}
 						download={"Thiago-Fidencio-CV.pdf"}
-						className="flex w-fit px-3 py-2 gap-2 rounded-md mt-3 hover:-rotate-6 hover:bg-primary/90 bg-foreground text-background text-sm"
+						className={cn(
+							buttonVariants({ variant: "default" }),
+							"mt-3 hover:-rotate-6",
+						)}
 					>
 						<FileDown className="size-4" /> Download Cv
 					</Link>
@@ -166,8 +171,13 @@ export default async function Home() {
 							<GithubCard key={repo.name} repo={repo} />
 						))}
 					</ScrollArea>
-					{/* <div className="w-full h-3/4 mt-3 flex flex-col items-end gap-3 overflow-y-auto">
-					</div> */}
+					<Link
+						href="https://github.com/ythiago03?tab=repositories"
+						target="_blank"
+						className={cn(buttonVariants({ variant: "link" }))}
+					>
+						See all projects
+					</Link>
 				</div>
 			</section>
 		</main>
