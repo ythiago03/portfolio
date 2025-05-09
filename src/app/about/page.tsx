@@ -33,6 +33,7 @@ import {
 	University,
 	UserPlus,
 } from "lucide-react";
+import { getMonthsPassed } from "@/lib/utils";
 
 interface Stack {
 	id: string;
@@ -337,7 +338,10 @@ async function About() {
 						<p>
 							Nov 2024 -
 							<span className="font-semibold text-blue-400"> Present</span>
-							<span className="text-muted-foreground "> 5 months</span>
+							<span className="text-muted-foreground ">
+								{" "}
+								{getMonthsPassed("11/2024")} months
+							</span>
 						</p>
 
 						<div className="space-y-1 my-3">
