@@ -33,3 +33,15 @@ export function sortPostsByDateDesc(posts: any[]) {
 		.slice()
 		.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
+
+export function getMonthsPassed(dateStr: string): number {
+	const [month, year] = dateStr.split("/").map(Number);
+
+	const inputDate = new Date(year, month - 1);
+	const currentDate = new Date();
+
+	const yearsDiff = currentDate.getFullYear() - inputDate.getFullYear();
+	const monthsDiff = currentDate.getMonth() - inputDate.getMonth();
+
+	return yearsDiff * 12 + monthsDiff;
+}
