@@ -9,18 +9,24 @@ const NextjsIcon = ({ className = "", ...rest }: Props) => {
 	const { theme } = useTheme();
 
 	return (
-		<img
-			{...rest}
-			src={
-				theme === "light"
-					? "/assets/nextjs-dark.png"
-					: "/assets/nextjs-light.png"
-			}
-			alt="NextJs Logo"
-			width={0}
-			height={0}
-			className={twMerge("w-12", className)}
-		/>
+		<>
+			<img
+				{...rest}
+				src="/assets/nextjs-dark.png"
+				alt="NextJs Logo"
+				width={0}
+				height={0}
+				className={twMerge("w-12 block dark:hidden", className)}
+			/>
+			<img
+				{...rest}
+				src="/assets/nextjs-light.png"
+				alt="NextJs Logo"
+				width={0}
+				height={0}
+				className={twMerge("w-12 hidden dark:block", className)}
+			/>
+		</>
 	);
 };
 
