@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,34 +19,29 @@ import { ToggleTheme } from "@/components/template/ToggleTheme";
 import { Menu } from "lucide-react";
 
 const Navbar = () => {
-	const { theme } = useTheme();
 	const pathname = usePathname();
 	const { setIsOpen } = useCommand();
-
 	const [isDrawerOpen, setIsDrawerOpen] = useState<boolean>(false);
 
 	return (
 		<nav className="fixed top-3 z-20 bg-background/80 backdrop-blur-sm  w-10/12 p-3 flex items-center justify-between rounded-lg sm:w-2/3">
 			<Link href={"/"}>
-				{theme === "light" ? (
-					<Image
-						src={"/assets/logo-dark.svg"}
-						width={0}
-						height={0}
-						className="w-24"
-						alt="Logo escrito Thiago"
-						draggable={false}
-					/>
-				) : (
-					<Image
-						src={"/assets/logo-light.svg"}
-						width={0}
-						height={0}
-						className="w-24"
-						alt="Logo escrito Thiago"
-						draggable={false}
-					/>
-				)}
+				<Image
+					src="/assets/logo-light.svg"
+					width={0}
+					height={0}
+					className="w-24 hidden dark:block"
+					alt="Logo do portfolio"
+					draggable={false}
+				/>
+				<Image
+					src="/assets/logo-dark.svg"
+					width={0}
+					height={0}
+					className="w-24 block dark:hidden"
+					alt="Logo do portfolio"
+					draggable={false}
+				/>
 			</Link>
 			<div className="flex items-center gap-3">
 				<ul className="hidden md:flex items-center gap-3">
