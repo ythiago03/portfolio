@@ -79,6 +79,39 @@ const Projects = () => {
 			],
 		},
 		{
+			id: "openResume",
+			title: "Open Resume",
+			status: "working",
+			isHidden: false,
+			description:
+				"A web application for creating online resumes with customizable sections and public shareable links, allowing users to easily showcase their professional profile.",
+			projectLink: "https://openresume.thiagof.com",
+			githubLink: "https://github.com/ythiago03/open-resume",
+			coverPath: "/assets/openResume.png",
+			stacks: [
+				{
+					id: "nextjs",
+					title: "Next.js",
+				},
+				{
+					id: "typescript",
+					title: "TypeScript",
+				},
+				{
+					id: "tailwind",
+					title: "Tailwind CSS",
+				},
+				{
+					id: "lucide",
+					title: "Lucide Icons",
+				},
+				{
+					id: "shadcn",
+					title: "Shadcn UI",
+				},
+			],
+		},
+		{
 			id: "devutils",
 			title: "DevUtils",
 			status: "online",
@@ -179,7 +212,9 @@ const Projects = () => {
 			</h1>
 			<section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
 				{projects
-					.filter((project) => project.status === "online" && !project.isHidden)
+					.filter(
+						(project) => project.status !== "secondary" && !project.isHidden,
+					)
 					.map((project) => (
 						<div
 							key={project.id}
@@ -188,8 +223,15 @@ const Projects = () => {
 							<Link
 								href={project.projectLink}
 								target="_blank"
-								className="rounded-lg overflow-hidden  border shadow-sm"
+								className="relative rounded-lg overflow-hidden border shadow-sm"
 							>
+								{project.status === "working" && (
+									<div className="absolute flex justify-center items-center inset-0 bg-zinc-200/5  backdrop-blur-xs ">
+										<h3 className="text-3xl -rotate-10 font-bold text-black drop-shadow-xl drop-shadow-background">
+											🚧 Working In Progress
+										</h3>
+									</div>
+								)}
 								<img
 									src={project.coverPath}
 									className="w-full  object-cover aspect-video"
@@ -197,7 +239,9 @@ const Projects = () => {
 								/>
 							</Link>
 							<div className="flex items-center gap-3">
-								<h2 className="text-xl font-bold">{project.title}</h2>
+								<h2 className="text-xl font-bold text-nowrap">
+									{project.title}
+								</h2>
 								<span className="w-full h-1 bg-foreground" />
 								<div className="flex gap-3">
 									<Link
