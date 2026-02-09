@@ -3,11 +3,12 @@ import { MDXContent } from "@/components/common/mdx-components";
 import { notFound } from "next/navigation";
 import "../../../../styles/mdx.css";
 interface PostPageProps {
-	params: { slug: string[] };
+	params: Promise<{ slug: string[] }>;
 }
 
 const getPostFromParams = async (params: PostPageProps["params"]) => {
-	const slug = params?.slug?.join("/");
+	const obj = await params;
+	const slug = obj?.slug?.join("/");
 	const post = posts.find((post) => post.slugAsParams === slug);
 	return post;
 };
