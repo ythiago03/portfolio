@@ -103,7 +103,7 @@ export default async function Home() {
 								alt="React logo"
 								className="size-3"
 							/>{" "}
-							react
+							React
 						</Link>
 						,{" "}
 						<Link
@@ -116,7 +116,7 @@ export default async function Home() {
 								alt="Typescript logo"
 								className="size-3"
 							/>{" "}
-							typescript
+							Typescript
 						</Link>
 						,{" "}
 						<Link
@@ -129,7 +129,7 @@ export default async function Home() {
 								alt="Tailwindcss logo"
 								className="size-3"
 							/>{" "}
-							tailwindcss
+							Tailwindcss
 						</Link>{" "}
 						among others.
 					</p>
