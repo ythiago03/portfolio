@@ -76,7 +76,6 @@ async function About() {
 			id: "nodejs",
 			imgPath: "/assets/nodejs.png",
 		},
-
 		{
 			id: "react",
 			imgPath: "/assets/react.png",
@@ -88,6 +87,10 @@ async function About() {
 		{
 			id: "typescript",
 			imgPath: "/assets/typescript.png",
+		},
+		{
+			id: "vitest",
+			imgPath: "/assets/vitest.png",
 		},
 	];
 	const haveKnownledgeStaks: Stack[] = [
@@ -110,7 +113,12 @@ async function About() {
 			imgPath: "/assets/spring.png",
 		},
 	];
-	const learningStaks: Stack[] = [];
+	const learningStaks: Stack[] = [
+		{
+			id: "nodejs",
+			imgPath: "/assets/nodejs.png",
+		},
+	];
 	const otherStaks: Stack[] = [
 		{
 			id: "azure",
@@ -148,7 +156,7 @@ async function About() {
 							Hello World
 						</h3>
 						<p>
-							I'm Thiago, a 22-year-old{" "}
+							I'm Thiago, a 23-years-old{" "}
 							<span className="font-bold">full-stack</span> developer from Belo
 							Horizonte, Brazil. Passionate about technology, I love building
 							and optimizing applications, always exploring new frameworks and
@@ -258,7 +266,7 @@ async function About() {
 							{usedAtWorkStaks.map((stack: Stack) => (
 								<div
 									key={stack.id}
-									className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm"
+									className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm capitalize"
 								>
 									<img
 										className="w-6"
@@ -278,7 +286,7 @@ async function About() {
 							{haveKnownledgeStaks.map((stack: Stack) => (
 								<div
 									key={stack.id}
-									className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm"
+									className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm capitalize"
 								>
 									<img
 										className="w-6"
@@ -295,14 +303,14 @@ async function About() {
 							I am studying
 						</AccordionTrigger>
 						<AccordionContent className="flex gap-3 flex-wrap justify-center md:justify-start">
-							<div className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm">
+							<div className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm ">
 								<NextjsIcon className="w-6" />
 								NextJs
 							</div>
 							{learningStaks.map((stack: Stack) => (
 								<div
 									key={stack.id}
-									className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm"
+									className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm capitalize"
 								>
 									<img
 										className="w-6"
@@ -322,7 +330,7 @@ async function About() {
 							{otherStaks.map((stack: Stack) => (
 								<div
 									key={stack.id}
-									className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm"
+									className="h-15 min-w-30 w-fit flex gap-3 p-2 justify-center items-center rounded-lg tex-lg bg-muted/20 shadow-sm capitalize"
 								>
 									<img
 										className="w-6"
@@ -340,12 +348,46 @@ async function About() {
 				<div className="mt-10">
 					<div className="w-full flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
 						<p>
-							Nov 2024 -
+							Nov 2025 -
 							<span className="font-semibold text-blue-400"> Present</span>
 							<span className="text-muted-foreground ">
 								{" "}
-								{getMonthsPassed("11/2024")} months
+								{getMonthsPassed("11/2025")} months
 							</span>
+						</p>
+
+						<div className="space-y-1 my-3">
+							<p className="text-muted-foreground">Full Time</p>
+							<p className="text-2xl font-semibold">Full-stack developer</p>
+							<Link
+								href={"https://mestria.com.br/"}
+								target="_blank"
+								className="inline-flex gap-1 text-muted-foreground underline hover:text-blue-400"
+							>
+								<ExternalLink className="size-6" />
+								Mestria Automação e Tecnologia
+							</Link>
+						</div>
+						<p>
+							Developed and maintained mobile applications using Capacitor and
+							Cordova, ensuring seamless cross-platform compatibility. Built and
+							supported modern web applications with React and Next.js, focusing
+							on responsive design and dynamic user experiences. Implemented
+							backend services using Node.js, optimizing performance,
+							scalability, and maintainability. Integrated applications with IoT
+							devices via Bluetooth, enabling real-time communication and device
+							interaction. Ensured project quality and maintainability by
+							organizing code using appropriate design patterns, implementing
+							unit tests with Vitest, and continuously monitoring application
+							stability and security.
+						</p>
+					</div>
+				</div>
+				<div className="mt-10">
+					<div className="w-full flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
+						<p>
+							Nov 2024 - Nov 2025
+							<span className="text-muted-foreground"> 1 year</span>
 						</p>
 
 						<div className="space-y-1 my-3">
@@ -433,7 +475,8 @@ async function About() {
 					<div className="w-full flex flex-col gap-3 p-6 rounded-lg bg-muted/20 shadow-sm">
 						<p>
 							Jan 2022 -
-							<span className="text-muted-foreground "> Dec 2025 4 years</span>
+							<span className="font-semibold text-blue-400"> Present</span>
+							<span className="text-muted-foreground "> 4 years</span>
 						</p>
 
 						<div className="space-y-1 my-3">

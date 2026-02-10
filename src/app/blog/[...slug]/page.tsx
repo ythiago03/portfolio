@@ -2,12 +2,14 @@ import { posts } from "#site/content";
 import { MDXContent } from "@/components/common/mdx-components";
 import { notFound } from "next/navigation";
 import "../../../../styles/mdx.css";
+
 interface PostPageProps {
 	params: { slug: string[] };
 }
 
 const getPostFromParams = async (params: PostPageProps["params"]) => {
-	const slug = params?.slug?.join("/");
+	const obj = await params;
+	const slug = obj?.slug?.join("/");
 	const post = posts.find((post) => post.slugAsParams === slug);
 	return post;
 };
@@ -17,7 +19,7 @@ export const generateStaticParams = async (): Promise<
 > => {
 	return posts.map((post) => ({ slug: post.slugAsParams.split("/") }));
 };
-const Post = async ({ params }: any) => {
+const Post = async ({ params }: { params: PostPageProps["params"] }) => {
 	const post = await getPostFromParams(params);
 
 	if (!posts || !post?.published) {
